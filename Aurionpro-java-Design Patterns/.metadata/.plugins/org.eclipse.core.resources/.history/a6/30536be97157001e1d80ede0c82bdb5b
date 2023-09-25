@@ -1,0 +1,12 @@
+package com.aurionpro.model;
+
+import java.util.List;
+
+public class Directory 
+{
+	private List<IEmployee> employees;
+	public Directory() {
+		this.
+	}
+
+}

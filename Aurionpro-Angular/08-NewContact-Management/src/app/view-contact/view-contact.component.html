@@ -1,0 +1,34 @@
+
+<div  *ngIf="!loading && errorMessage" class="border border-danger text-danger h5 col-md-6 mt-3 p-2">
+
+    {{errorMessage}}
+  
+  </div>
+  
+<div class="container m-3" *ngIf="!loading && !errorMessage">
+<div class="col-sm-8">
+    <img  [src]="contact.photo" class="contact-image">
+
+    <ul class="list-group">
+        <li class=" bg-light">
+            <span>Name: {{contact.name}}</span>
+        </li>
+        <li>
+            <span>Email: {{contact.email}}</span>
+        </li>
+        <li>
+            <span>Mobile: {{contact.mobile}}</span>
+        </li>
+        <li>
+            <span>Company: {{contact.company}}</span>
+        </li>
+        <li>
+            <span>Job Title: {{contact.title}}</span>
+        </li>
+        <li>
+            <span>Group Name: {{groupName}}</span>
+        </li>
+    </ul>
+</div>
+</div>
+<pre>{{contact|json}}</pre>

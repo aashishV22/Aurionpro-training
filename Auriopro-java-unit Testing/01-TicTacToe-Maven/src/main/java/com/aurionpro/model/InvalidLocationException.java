@@ -1,0 +1,21 @@
+package com.aurionpro.model;
+
+public class InvalidLocationException extends Exception {
+	String message;
+	public InvalidLocationException(String message) 
+	{
+		super(message);
+		this.message=message;
+	}
+	private static final long serialVersionUID = 1L;
+	@Override
+	public String getMessage() 
+	{
+		return this.getClass().getSimpleName()+" " +super.getMessage();
+	}
+	@Override
+	public String toString() 
+	{
+		return "Invalid location Exception [message=" + message + "]";
+	}
+}

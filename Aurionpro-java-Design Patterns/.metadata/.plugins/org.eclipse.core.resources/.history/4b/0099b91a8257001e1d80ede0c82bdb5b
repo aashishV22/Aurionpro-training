@@ -1,0 +1,13 @@
+package com.aurionpro.model;
+
+import java.util.HashMap;
+
+public class CircleShapeFactory {
+
+	private HashMap<String, IShape> circleMap;
+	
+	public IShape getCircle(String color) {
+		
+	}
+	
+}

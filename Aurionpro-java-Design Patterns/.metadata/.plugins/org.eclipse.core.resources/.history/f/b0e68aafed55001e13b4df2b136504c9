@@ -1,0 +1,14 @@
+package com.aurionpro.model;
+
+public class CarInspection extends CarServiceDecorator{
+
+	public CarInspection(ICarService obj) {
+		super(obj);
+	}
+
+	@Override
+	public double getCost() {
+		return 1000;
+	}
+
+}

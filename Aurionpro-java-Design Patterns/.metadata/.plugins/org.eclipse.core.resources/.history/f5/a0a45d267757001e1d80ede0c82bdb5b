@@ -1,0 +1,12 @@
+package com.aurionpro.model;
+
+public class OperationStrategy 
+{
+	private IOperation operation;
+
+	public OperationStrategy(IOperation operation) {
+		super();
+		this.operation = operation;
+	}
+	
+}

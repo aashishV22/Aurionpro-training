@@ -1,0 +1,16 @@
+package com.aurionpro.model;
+
+public abstract class HatDecorator implements IHat
+{
+	private IHat hatObj;
+	
+	public HatDecorator(IHat obj) {
+		this.hatObj=obj;
+	}
+
+	@Override
+	public double getPrice() {
+		return hatObj.getPrice();
+	}
+
+}

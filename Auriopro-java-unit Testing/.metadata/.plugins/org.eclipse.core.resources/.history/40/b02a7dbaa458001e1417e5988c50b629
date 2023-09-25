@@ -1,0 +1,32 @@
+package com.aurionpro.test;
+
+import com.aurionpro.model.*;
+
+public class TicTacToeTest 
+{
+	public static void main(String[] args) throws CellAlreadyMarkedException {
+		Board board =new Board();
+		ResultAnalyzer result =new ResultAnalyzer(board);
+		boolean isGameFinished=false;
+			
+		
+		while(!isGameFinished) {
+			displayBoard(board);
+			
+			
+		}
+		
+		System.out.println(board.isBoardFull());
+		board.setCellMark(0, MarkType.X);
+		board.setCellMark(1, MarkType.O);
+
+		System.out.println(result.horizontalWinCheck());
+		System.out.println(board.getCells());
+		System.out.println(board.getBoard());
+	}
+
+	private static void displayBoard(Board board) {
+		Cell[] cells=board.getCells();
+		System.out.println("________________________________");
+	}
+}

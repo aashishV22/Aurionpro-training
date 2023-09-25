@@ -1,0 +1,25 @@
+package com.aurionpro.model;
+
+public class Cell 
+{
+	private MarkType mark;
+	public Cell() {
+		this.mark=mark;
+	}
+	public boolean isEmpty() 
+	{
+		if(this.mark!=MarkType.EMPTY) 
+		{
+			return false;
+		}
+		return true;
+	}
+	
+	public MarkType getMark() {
+		return this.mark;
+	}
+	public void setMark(MarkType mark) {
+		this.mark=mark;
+	}
+	
+}

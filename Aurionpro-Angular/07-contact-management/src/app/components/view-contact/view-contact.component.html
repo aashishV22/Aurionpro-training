@@ -1,0 +1,107 @@
+<div  *ngIf="loading">
+
+  <app-spinner></app-spinner>
+
+</div>
+
+<div  *ngIf="!loading && errorMessage" class="border border-danger text-danger h5 col-md-6 mt-3 p-2">
+
+  {{errorMessage}}
+
+</div>
+
+<div class="container mt-3" *ngIf="!loading && !errorMessage">
+
+  <div class="row">
+
+    <div class="col-md-6">
+
+      <div class="card">
+
+        <div class="card-body shadow-lg">
+
+          <div class="row align-items-center">
+
+            <div class="col-sm-4">
+
+              <img
+
+                [src]="contact.photo"
+
+                class="contact-image"
+
+                alt="User Avatar Image"
+
+              />
+
+            </div>
+
+            <div class="col-sm-8">
+
+              <ul class="list-group">
+
+                <li class="list-group-item bg-light">
+
+                  <span class="fw-bold">Name : {{contact.name}}</span>
+
+                </li>
+
+                <li class="list-group-item bg-light">
+
+                  <span class="fw-bold">Email : {{contact.email}}</span>
+
+                </li>
+
+                <li class="list-group-item bg-light">
+
+                  <span class="fw-bold">Mobile : {{contact.mobile}}</span>
+
+                </li>
+
+                <li class="list-group-item bg-light">
+
+                    <span class="fw-bold">Company : {{contact.company}}</span>
+
+                </li>
+
+                <li class="list-group-item bg-light">
+
+                    <span class="fw-bold">Job Title : {{contact.title}}</span>
+
+                </li>
+
+                <li class="list-group-item bg-light">
+
+                  <span class="fw-bold">Group Name : {{groupName}}</span>
+
+              </li>
+
+              </ul>
+
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="m-3 d-flex justify-content-center">
+
+                <a routerLink="/" class="btn btn-outline-dark mx-2">
+
+                <i class="fa fa-arrow-alt-circle-left mx-2"></i>Home</a>
+
+             </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- <pre>{{contact|json}}</pre> -->

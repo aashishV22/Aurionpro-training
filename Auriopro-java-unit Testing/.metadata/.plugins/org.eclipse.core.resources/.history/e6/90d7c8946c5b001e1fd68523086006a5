@@ -1,0 +1,17 @@
+package com.aurionpro.model;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class CellTest {
+
+	@Test
+	void CellShouldBeEmptyTest() 
+	{
+		Cell cell=new Cell();
+		assertEquals(false,cell.isEmpty());
+		System.out.println(cell.isEmpty());
+	}
+
+}

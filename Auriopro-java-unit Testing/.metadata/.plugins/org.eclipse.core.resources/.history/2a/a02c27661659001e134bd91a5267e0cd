@@ -1,0 +1,19 @@
+package com.aurionpro.model;
+
+public class MathUtil 
+{
+	private int input=5;
+	private int Fact=1;
+    
+
+    public int factorial() {
+    	for(int i=1;i<=input;i++)
+        {   
+            Fact=Fact*i;
+        }
+    	return Fact;
+    }
+
+    
+
+}

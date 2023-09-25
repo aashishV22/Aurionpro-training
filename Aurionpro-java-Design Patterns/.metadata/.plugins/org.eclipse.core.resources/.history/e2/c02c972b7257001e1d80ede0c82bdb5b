@@ -1,0 +1,24 @@
+package com.aurionpro.model;
+
+import java.util.List;
+
+public class Directory implements IEmployee
+{
+
+	@Override
+	public void showEmployeeDetails() {
+		System.out.println(this.employees);
+	}
+	
+	private List<IEmployee> employees;
+	
+	public Directory() {
+		this.employees=employees;
+	}
+
+	public void addEmployee(IEmployee employee) {
+		
+	}
+	
+	
+}

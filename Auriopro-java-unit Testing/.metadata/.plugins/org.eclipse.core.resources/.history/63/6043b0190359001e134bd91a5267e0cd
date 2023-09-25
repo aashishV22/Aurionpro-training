@@ -1,0 +1,68 @@
+package com.aurionpro.model;
+
+import java.util.Arrays;
+
+public class ResultAnalyzer 
+{
+	private Board board;
+	private ResultType result;
+	public ResultAnalyzer(Board board) {
+		this.board=board;
+		this.result=result;
+	}
+	
+	public ResultType horizontalWinCheck() {
+		for(int i=0;i<3;i++) 
+		{
+			if(this.board.getCells()[i*3]==this.board.getCells()[(i*3)+1] && this.board.getCells()[(i*3)+1]==this.board.getCells()[(i*3)+2]  )
+					{
+						this.result=ResultType.WINNER;
+						break;
+					}
+			break;
+		}
+		return this.result;
+	}
+
+
+	public ResultType verticalWinCheck() {
+		for(int i=0;i<3;i++) 
+		{
+			if(this.board.getCells()[i]==this.board.getCells()[i+3] && this.board.getCells()[i+3]==this.board.getCells()[i+6]  )
+					{
+						this.setResult(ResultType.WINNER );
+					}
+		}
+		return this.result;
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	public Board getBoard() {
+		return board;
+	}
+
+	public void setBoard(Board board) {
+		this.board = board;
+	}
+
+	public ResultType getResult() {
+		return result;
+	}
+
+	public void setResult(ResultType result) {
+		this.result = result;
+	}
+
+	@Override
+	public String toString() {
+		return "ResultAnalyzer [board=" + board + ", result=" + result + "]";
+	}
+	
+	
+}

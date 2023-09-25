@@ -1,0 +1,15 @@
+package com.aurionpro.model;
+
+public class Developer implements IEmployee
+{
+
+	@Override
+	public void showEmployeeDetails() {
+		
+	}
+
+	private String name;
+	private String position;
+	
+	
+}

@@ -1,0 +1,49 @@
+package com.aurionpro.model;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+class BoardTest {
+
+	@Test
+	void test() {
+//		fail("Not yet implemented");
+	}
+	
+	Board board;
+	Cell[] cells;
+	@BeforeEach
+	void init() 	{		board=new Board();
+							cells=board.getBoard();	}
+	
+	@Test
+	void allBoardisEmpty() 
+	{
+		for(int i=0;i<9;i++) {
+			if(cells[i].getMark()!=MarkType.EMPTY) {
+				assertTrue(false);
+			}
+		}
+			assertTrue(true);
+	}	
+	
+	@Test
+	void ableToMark() throws CellAlreadyMarkedException, InvalidLocationException {
+		board.setCellMark(7, MarkType.X);
+		assertEquals(MarkType.X,cells[7].getMark());
+	}
+	
+	@Test
+	void invalidLocation() throws CellAlreadyMarkedException, InvalidLocationException {
+//		board.setCellMark(7, MarkType.X);
+		assertThrows(InvalidLocationException.class, ()-> board.setCellMark(9,MarkType.X));
+	}
+	
+	@Test
+	void isBoardFull() {
+		
+	}
+	
+}

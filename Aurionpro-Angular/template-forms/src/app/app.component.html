@@ -1,0 +1,7 @@
+<app-user (output)="saveDetails($event)"></app-user>
+
+<div>
+  <ul>
+    <li *ngFor="let detail of details">{{detail.username}} <br>{{detail.email}}</li>
+  </ul>
+</div>

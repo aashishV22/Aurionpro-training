@@ -1,0 +1,10 @@
+package com.aurionpro.model;
+
+public class InsufficientBalanceException1 extends Exception {
+
+	public InsufficientBalanceException1(String string) {
+		// TODO Auto-generated constructor stub
+	}
+
+
+}

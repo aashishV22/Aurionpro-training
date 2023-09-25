@@ -1,0 +1,125 @@
+<div class="container mt-3">
+
+    <div class="row">
+
+        <div class="bg-light h3 fw-bold p-2 text-center">Add new contact</div>
+
+    </div>
+
+</div>
+
+ 
+
+ 
+
+ 
+
+<pre>{{contact|json}}</pre>
+
+<pre>{{groups|json}}</pre>
+
+<div class="container">
+
+    <div>
+
+       
+
+        <div class="col-md-12">
+
+            <form (submit)="onSubmit()" #f="ngForm">
+
+                <div class="m-3">
+
+                    <label class="lead" for="name">Enter Name</label>
+
+                    <input type="text" id="name" class="form-control"
+
+                    [(ngModel)]="contact.name"
+
+                     name="name"
+
+                     required>
+
+                </div>
+
+                <div class="m-3">
+
+                    <label class="lead" for="email">Enter Email</label>
+
+                    <input type="text" id="email" class="form-control"
+
+                    [(ngModel)]="contact.email" name="email" required email >
+
+                </div>
+
+                <div class="m-3">
+
+                    <label class="lead" for="mobile">Enter Mobile</label>
+
+                    <input type="number" id="mobile" class="form-control"
+
+                     [(ngModel)]="contact.mobile" name="mobile" required>
+
+                </div>
+
+                <div class="m-3">
+
+                    <label class="lead" for="image">Enter Image url</label>
+
+                    <input type="text" id="image" class="form-control"
+
+                    [(ngModel)]="contact.photo" name="photo" required>
+
+                </div>
+
+                <div class="m-3">
+
+                    <label class="lead" for="company">Enter Company name</label>
+
+                    <input type="text" id="company" class="form-control"
+
+                    [(ngModel)]="contact.company" name="company" required>
+
+                </div>
+
+                <div class="m-3">
+
+                    <label class="lead" for="title">Enter Job title</label>
+
+                    <input type="text" id="title" class="form-control"
+
+                     [(ngModel)]="contact.title" name="title" required>
+
+                </div>
+
+                <div class="m-3">
+
+                    <label class="lead" for="image">Select a group</label>
+
+                    <select id="group" class="form-control" *ngIf="groups.length>0" [(ngModel)]="contact.groupId" name="groupId" required >
+
+                        <option [value]="group.id" *ngFor="let group of groups">{{group.name}}</option>
+
+                    </select>
+
+                </div>
+
+                <div class="m-3 d-flex justify-content-center">
+
+                   <button [disabled]="!f.valid" type="submit" class="btn btn-primary">Add Contact</button>
+
+                   <a routerLink="/" class="btn btn-outline-dark mx-2">Cancel</a>
+
+                </div>
+
+ 
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+ 

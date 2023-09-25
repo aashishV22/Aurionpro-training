@@ -1,0 +1,16 @@
+package com.aurionpro.model;
+
+public class StandardHat implements IHat
+{
+
+	@Override
+	public String getName() {
+		return null;
+	}
+
+	@Override
+	public double getPrice() {
+		return 0;
+	}
+
+}

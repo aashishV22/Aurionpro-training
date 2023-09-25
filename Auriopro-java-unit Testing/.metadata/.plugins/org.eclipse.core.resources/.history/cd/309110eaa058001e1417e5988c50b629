@@ -1,0 +1,8 @@
+package com.aurionpro.test;
+
+public enum ResultType 
+{
+	WIN,
+	DRAW,
+	PROGRESS;
+}

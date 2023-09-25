@@ -1,0 +1,10 @@
+package com.aurionpro.model;
+
+public class CellAlreadyMarkedException extends Exception {
+
+	@Override
+	public String getLocalizedMessage() {
+		return super.getLocalizedMessage();
+	}
+	
+}

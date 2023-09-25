@@ -1,0 +1,9 @@
+package com.aurionpro.model;
+
+public class Cell 
+{
+	private MarkType mark;
+	public Cell() {
+		this.mark=mark
+	}
+}

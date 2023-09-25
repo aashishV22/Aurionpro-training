@@ -1,0 +1,49 @@
+<!--String interpolation-->
+<h1>Welcome: {{title}}</h1>
+
+<!-- property binding --->
+<a [href]=link>click me</a>
+
+<!--Event binnding-->
+<div>
+  <button (click)="incrementCounter()">
+    Increment
+  </button>
+  <p>Value of counter {{counter}}</p>
+  <button (click)="decrementCounter()">
+    Decrement
+  </button>
+  <br><br>
+  <input type="text" [(ngModel)]='inputValue'>
+  <h1>{{inputValue}}</h1>
+</div>
+<div>
+  <input type="'text" [ngModel]="inputValuee" (ngModelChange)="updateInput($event)">
+  <h1>{{inputValuee}}</h1>
+</div>
+<img [src]="imgLink" alt="some image">
+<div class="mt-2">
+  <button (click)="incrementCounterAgain()" class="btn btn-primary">click here</button>
+  <h2>Increment: {{countAgain}}</h2>
+
+</div>
+
+<div class="mt-2">
+  <button (click)="warningClick()" class="btn btn-warning m-4">Click me</button>
+  <button (click)="dangerClick()" class="btn btn-danger m-4">Click</button>
+  <button (click)="primaryClick()" class="btn btn-primary m-4">click</button>
+  <h1 class="bg success()">{{message}}</h1>
+</div>
+
+<div class="mt-4">
+  <input type="'text" class="form-control"[(ngModel)]="inputValueNew">
+  <button (click)="onSubmit()" class="btn btn-success">Submit</button>
+  <h1>{{submittedValue}}</h1>
+</div>
+
+<div class="mt-4">
+  <input type="'text" class="form-control" [(ngModel)]="userName" placeholder="Enter username"> 
+  <button (click)="onSubmitSave()" class="btn btn-success">Save</button>
+  <button (click)="userName=''" class="btn btn-success" [disabled]='userName.length==0'>clear</button>
+  <h1>{{userSaved}}</h1>
+</div>

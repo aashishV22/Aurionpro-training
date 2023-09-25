@@ -1,0 +1,9 @@
+package com.aurionpro.model;
+
+public class SmsNotifier implements INotifier {
+
+
+	@Override
+	public void notifyUser(Account account, double amount) {
+		System.out.println("SMS Notification\n"+account);
+	}}

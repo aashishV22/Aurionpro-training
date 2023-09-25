@@ -1,0 +1,12 @@
+package com.aurionpro.model;
+
+public class Circle {
+	private String color;
+
+	public Circle(String color) {
+		super();
+		this.color = color;
+	}
+	
+	
+}

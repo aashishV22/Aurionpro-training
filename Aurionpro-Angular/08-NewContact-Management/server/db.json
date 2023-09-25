@@ -1,0 +1,53 @@
+{
+  "contacts": [
+    {
+      "id": "TVobxeKbI",
+      "name": "Anup Vanage",
+      "company": "Infosys",
+      "email": "avanage@gmail.com",
+      "title": "System Engineer",
+      "mobile": 8880008882,
+      "photo": "https://avatars.githubusercontent.com/u/109951?v=4",
+      "groupId": "1"
+    },
+    {
+      "name": "Swabhav",
+      "email": "swabhav@gmail.com",
+      "mobile": 1232312,
+      "photo": "https://static.toiimg.com/thumb/imgsize-23456,msid-1636474,width-600,resizemode-4/1636474.jpg",
+      "company": "Bhopalisss",
+      "title": "Katta maker",
+      "groupId": "3",
+      "id": "BrWKvgC"
+    }
+  ],
+  "groups": [
+    {
+      "id": "1",
+      "name": "Colleague"
+    },
+    {
+      "id": "2",
+      "name": "Friend"
+    },
+    {
+      "id": "3",
+      "name": "Family"
+    },
+    {
+      "id": "4",
+      "name": "Service"
+    },
+    {
+      "id": "5",
+      "name": "Community"
+    },
+    {
+      "id": "6",
+      "name": "Social"
+    }
+  ],
+  "hello": {
+    "Relation": "father"
+  }
+}

@@ -1,0 +1,9 @@
+package com.aurionpro.model;
+
+public class StringUtil
+{
+	public String truncateAInFirst2Positions(String str) {
+		return str;
+		
+	}
+}

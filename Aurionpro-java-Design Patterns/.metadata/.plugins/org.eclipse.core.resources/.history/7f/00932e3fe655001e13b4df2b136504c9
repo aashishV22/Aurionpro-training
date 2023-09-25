@@ -1,0 +1,10 @@
+package com.aurionpro.model;
+
+public class CarServiceDecorator implements ICarService{
+
+	@Override
+	public double getCost() {
+		return 0;
+	}
+
+}

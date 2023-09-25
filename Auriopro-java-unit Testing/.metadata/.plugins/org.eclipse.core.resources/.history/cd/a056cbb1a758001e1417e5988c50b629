@@ -1,0 +1,50 @@
+package com.aurionpro.test;
+
+import java.util.Scanner;
+
+import com.aurionpro.model.*;
+
+public class TicTacToeTest 
+{
+	public static void main(String[] args) throws CellAlreadyMarkedException {
+		Board board =new Board();
+		ResultAnalyzer result =new ResultAnalyzer(board);
+		boolean isGameFinished=false;
+		Scanner sc=new Scanner(System.in);	
+		MarkType playerMark;
+		int startMarker=0;
+		
+		while(!isGameFinished) {
+			if(startMarker%2==0) {		startMarker++;	playerMark=MarkType.O;		}else 
+								 {		playerMark=MarkType.X;						}
+			displayBoard(board);
+			System.out.print("Player "+ playerMark + "Enter your position");
+			int inputPosition=sc.nextInt();
+			if(result.horizontalWinCheck()!=null) {
+				System.out.println();
+			};
+			if(result.verticalWinCheck()!=null) {
+				System.out.println();
+			};
+			
+		
+		}
+		
+		System.out.println(board.isBoardFull());
+		board.setCellMark(0, MarkType.X);
+		board.setCellMark(1, MarkType.O);
+
+		System.out.println(result.horizontalWinCheck());
+		System.out.println(board.getCells());
+		System.out.println(board.getBoard());
+	}
+
+	private static void displayBoard(Board board) {
+		Cell[] cells=board.getCells();
+		System.out.println("___________________________________________________________________________________");
+		for(int i=0;i<3;i++) {
+			System.out.println("_|_"+cells[i*3]+"_|_"+cells[(i*3)+1] + "_|_"+ cells[(i*3)+2] +"_|_" +"\n");
+		}
+		
+	}
+}

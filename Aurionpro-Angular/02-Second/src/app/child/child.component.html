@@ -1,0 +1,49 @@
+<h1>child hello</h1>
+<p>child works!</p>
+
+<div>
+    <p *ngIf="show;else elseBlock">Content to render when condition is true</p>
+    <ng-template #elseBlock>Content to render when it is false </ng-template>
+    <br><hr>
+    <div>
+    <p *ngIf="show;then ifBlock else elseBlock"></p>
+    <ng-template #ifBlock>new Content for true</ng-template>
+    <ng-template #elseBlock>new Content for false</ng-template>
+    </div>
+
+    <h2 *ngIf="color=='blue'" style="color: blue">this is blue</h2>
+    <ng-template [ngIf]="color=='blue'" >
+        <h1 style="color:blue">this is blue from ng-template</h1> 
+    </ng-template>
+
+    <div [ngSwitch]="color">
+        <h1 *ngSwitchCase="'blue'" style="color:blue">Switch case blue</h1>
+        <h1 *ngSwitchCase="'red'" style="color:red">Switch case red</h1>
+        <h1 *ngSwitchCase="'green'" style="color:green">Switch case green</h1>
+        <h1 *ngSwitchDefault style="color:yellow">Switch case yellow</h1>
+    </div>
+
+    <div>
+        <ul>
+            <li *ngFor="let player of players">{{player}} </li>
+        </ul>
+    </div>
+
+    <div>
+        <table class="table">
+        <thead class="thead-dark">
+            <th>ID</th>
+            <th>Name</th>
+            <th>Percent</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let student of students">
+            <td class="td td-danger">{{student.id}}</td>
+            <td>{{student.firstName}}</td>
+            <td>{{student.percentage}}</td>
+        </tr>
+        </tbody>
+        </table>
+
+    </div>
+</div>

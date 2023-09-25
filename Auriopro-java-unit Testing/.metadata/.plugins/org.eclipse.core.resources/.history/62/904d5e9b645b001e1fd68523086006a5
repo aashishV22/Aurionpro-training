@@ -1,0 +1,14 @@
+package com.aurionpro.model;
+
+public class StringUtil
+{
+	public String truncateAInFirst2Positions(String str) {
+		String str1=str.replace("A", "");
+		
+	}
+	
+	public boolean areFirstAndLastTwoCharactersTheSame(String str) {
+		return false;
+		
+	}
+}

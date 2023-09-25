@@ -1,0 +1,14 @@
+
+<!-- <ul>
+    <li *ngFor="let movie of inputMovies">Movie Name:-{{movie.name}}<br>Movie Description:-{{movie.description}}
+    </li>
+</ul> -->
+
+  <div class="card text-center" *ngFor="let movie of inputMovies">
+    <div class="card-header bg-danger bg-gradient "><br></div>
+    <div class="card-body">
+      <h5 class="card-title">Movie Name:-{{movie.name}}</h5>
+      <p class="card-text">Movie Description:-{{movie.description}}</p>
+    </div>
+    <div class="card-footer bg-warning bg-gradient"><br></div>
+  </div>

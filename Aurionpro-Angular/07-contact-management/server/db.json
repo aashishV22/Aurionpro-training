@@ -1,0 +1,80 @@
+{
+  "contacts": [
+    {
+      "id": "TVobxeKbI",
+      "name": "Anup Vanage",
+      "company": "Infosys",
+      "email": "avanage@gmail.com",
+      "title": "System Engineer",
+      "mobile": 8880008882,
+      "photo": "https://avatars.githubusercontent.com/u/109951?v=4",
+      "groupId": "1"
+    },
+    {
+      "id": "UyEDV5Yds",
+      "name": "Nitin Shinde",
+      "company": "Service",
+      "email": "shinden@gmail.com",
+      "title": "Techician",
+      "mobile": "9876546787",
+      "photo": "https://png.pngtree.com/png-clipart/20190922/original/pngtree-business-male-user-avatar-vector-png-image_4774078.jpg",
+      "groupId": "4"
+    },
+    {
+      "name": "Rajan",
+      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDut34oRr4nEjV0_MUAqsz6kVYv1WAf38he_CzyJRPOdTJosDHH0bzfgS8R-PR3FncKFc&usqp=CAU",
+      "mobile": "9090909090",
+      "email": "rajan@gmail.com",
+      "company": "HCL Technologies",
+      "title": "Software Engineer",
+      "groupId": "1",
+      "id": "kLt-bJF"
+    },
+    {
+      "name": "Swabhav",
+      "email": "swabhav@gmail.com",
+      "mobile": 1232312,
+      "photo": "https://static.toiimg.com/thumb/imgsize-23456,msid-1636474,width-600,resizemode-4/1636474.jpg",
+      "company": "Bhopalisss",
+      "title": "Katta maker",
+      "groupId": "3",
+      "id": "BrWKvgC"
+    },
+    {
+      "name": "siiiii",
+      "email": "qswsw@gmail.com",
+      "mobile": 2321312423,
+      "photo": "sdsdqwsdqwe",
+      "company": "deeded",
+      "title": "wdwdwdw``",
+      "groupId": "4",
+      "id": "b4U28KC"
+    }
+  ],
+  "groups": [
+    {
+      "id": "1",
+      "name": "Colleague"
+    },
+    {
+      "id": "2",
+      "name": "Friend"
+    },
+    {
+      "id": "3",
+      "name": "Family"
+    },
+    {
+      "id": "4",
+      "name": "Service"
+    },
+    {
+      "id": "5",
+      "name": "Community"
+    },
+    {
+      "id": "6",
+      "name": "Social"
+    }
+  ]
+}

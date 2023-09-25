@@ -1,0 +1,100 @@
+<div class="container mt-3">
+    <div class="row">
+    <div class="col">
+    <p class="h5 fw-bold">Add new contact
+    <a routerLink="/contacts/add" class="btn btn-sm btn-primary">
+    <i class="fa fa-plus-circle mx-2"></i>Add
+    </a>
+    </p>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-md-4">
+    <input type="text" class="form-control" placeholder="Search User" #search>
+    </div>
+    <div class="col">
+    <button class="btn btn-success" >
+    <i class="fa fa-search mx-2"></i> Search</button>
+    </div>
+    </div>
+    </div>
+    
+     
+    
+     
+    
+    <!-- <pre>{{contacts|json}}</pre> -->
+
+    <div class="container mt-3" *ngIf="!loading && filteredContacts.length > 0">
+    
+        <div class="row">
+    
+            <div class="col-md-6 my-2" *ngFor="let contact of filteredContacts">
+    
+                <div class="card">
+    
+                    <div class="card-body shadow-lg">
+    
+                      <div class="row align-items-center">
+    
+                        <div class="col-sm-4">
+    
+                            <img [src]="contact.photo" class="contact-image" alt="Fissure in Sandstone"/>
+    
+                        </div>
+    
+                        <div class="col-sm-8">
+    
+                            <ul class="list-group ">
+    
+                                <li class="list-group-item bg-light"><span class="fw-bold">Name   : {{contact.name}}</span></li>
+    
+                                <li class="list-group-item bg-light"><span class="fw-bold">Email  : {{contact.email}}</span></li>
+    
+                                <li class="list-group-item bg-light"><span class="fw-bold">Mobile : {{contact.mobile}}</span></li>
+    
+                               
+    
+                            </ul>
+    
+                        </div>
+    
+                      </div>
+    
+                      <div class="row align-items-center ">
+    
+                        <div class="col-sm-4"> 
+    
+                        </div>
+    
+                        <div class="col-sm-8 d-flex  align-items-center">
+    
+                            <button routerLink="/contacts/view/{{contact.id}}" class="btn btn-primary mx-1" >
+    
+                            <i class="fa fa-eye mx-1"></i>View</button>
+    
+                            <button routerLink="/contacts/edit/{{contact.id}}" class="btn btn-secondary  mx-1">
+    
+                            <i class="fa fa-edit mx-1"></i>Update</button>
+    
+                            <button class="btn btn-danger  mx-1" (click)="onDelete(contact.id)">
+    
+                            <i class="fa fa-trash mx-1"></i>Delete</button>
+    
+                        </div>
+    
+                      </div>
+    
+                    </div>
+    
+                  </div>
+    
+            </div>
+    
+        </div>
+    
+       
+    
+    </div>
+    
+     

@@ -1,0 +1,52 @@
+<div class =" h3 p-2 text-center">Update  contact</div>
+
+<div class="container">
+    <pre>{{contact|json}}</pre>
+    <!-- <pre>{{groups |json}}</pre> -->
+
+<form (submit)="onSubmit()" #f="ngForm">
+    <div class="m-3">
+        <label class="lead" for="name">Enter Name</label>
+        <input type="text"  id="name" class="form-control" [(ngModel)]="contact.name"  name="name" required>
+        
+    </div>
+    <div class="m-3">
+        <label class="lead" for="email">Enter Email</label>
+        <input type="text"  id="email" class="form-control" [(ngModel)]="contact.email"  name="email" required email>
+        
+    </div>
+    <div class="m-3">
+        <label class="lead" >Enter Mobile number</label>
+        <input type="number"  id="mobile" class="form-control" [(ngModel)]="contact.mobile"  name="number" required >
+        
+    </div>
+    <div class="m-3">
+        <label class="lead" >Enter Image url</label>
+        <input type="text"  id="image" class="form-control" [(ngModel)]="contact.photo"  name="photo" required >
+    </div>
+        
+    <div class="m-3">
+        <label class="lead" >Enter Company name</label>
+        <input type="text" id="company" class="form-control" [(ngModel)]="contact.company" name="company" required>
+    </div>    
+
+    <div class="m-3">
+        <label class="lead" >Enter Job title</label>
+        <input type="text" id="title" class="form-control" [(ngModel)]="contact.title" name="title" required>
+    </div>    
+
+    <div class="m-3">
+        <label class="lead" >Select a group</label>
+        <select id="group" class="form-control" *ngIf="groups.length>0" [(ngModel)]="contact.groupId" name="groupId" required >
+            <option [value]="group.id" *ngFor="let group of groups">{{group.name}}</option>
+        </select>
+    </div>
+
+    <div class="m-3 d-flex justify-content-center">
+        <button [disabled]="!f.valid" type="submit" class="btn btn-primary">Update Contact</button>
+        <a routerLink="/" class="btn btn-outline-dark mx-2">Cancel</a>
+     </div>
+
+</form>
+
+</div>

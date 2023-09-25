@@ -1,0 +1,28 @@
+package com.aurionpro.model;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+
+class CellTest {
+	
+	@BeforeAll
+	static void init() {
+		util=new Cell();
+		System.out.println("Before All");
+	
+	@Test
+	void cellShouldBeEmptyTest() 
+	{
+		Cell cell=new Cell();
+		assertTrue(cell.isEmpty());
+		System.out.println("Cell is Empty('true')"+cell.isEmpty());
+	}
+
+	@Test
+	void cellMarking() 
+	{
+		
+	}
+}

@@ -1,0 +1,15 @@
+package com.aurionpro.model;
+
+public class SemiConsultant implements IRole{
+
+	@Override
+	public String description() {
+		return "Consultant:- Description";
+	}
+
+	@Override
+	public String responsibility() {
+		return "Semi-Consultant:- Reviews code";
+	}
+
+}

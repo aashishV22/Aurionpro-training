@@ -1,0 +1,14 @@
+package com.aurionpro.model;
+
+public class MathUtil 
+{
+	int input=5;
+	int Fact=1;
+    
+    for(int i=1;i<=firstNumber;i++)
+    {   
+        Fact=Fact*i;
+        System.out.printf("Factorial is %d \n ",Fact);
+    }
+    System.out.printf("Factorial of %d is %d ", firstNumber,Fact);        
+}
