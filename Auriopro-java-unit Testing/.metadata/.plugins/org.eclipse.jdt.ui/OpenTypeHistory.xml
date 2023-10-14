@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <typeInfoHistroy>
-    <typeInfo handle="=02-unit/src\/test\/java=/optional=/true=/=/maven.pomderived=/true=/=/test=/true=/&lt;com.aurionpro.model{MathUtilTest.java[MathUtilTest" modifiers="0" timestamp="1695369762470"/>
     <typeInfo handle="=01-TicTacToe-Maven/src\/test\/java=/optional=/true=/=/maven.pomderived=/true=/=/test=/true=/&lt;com.aurionpro.model{CellTest.java[CellTest" modifiers="0" timestamp="1695625705890"/>
     <typeInfo handle="=01-TicTacToe-Maven/src\/test\/java=/optional=/true=/=/maven.pomderived=/true=/=/test=/true=/&lt;com.aurionpro.model{BoardTest.java[BoardTest" modifiers="0" timestamp="1695629638577"/>
 </typeInfoHistroy>

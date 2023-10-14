@@ -1,6 +1,0 @@
-package com.aurionpro.model;
-
-public class Board 
-{
-	Cell[] cells=new Cell[9];
-}

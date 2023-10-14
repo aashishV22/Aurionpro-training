@@ -1,6 +1,0 @@
-package com.aurionpro.model;
-
-public class Circle {
-	private String color;
-	
-}

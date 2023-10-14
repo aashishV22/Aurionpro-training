@@ -1,57 +1,36 @@
 package com.aurionpro.model;
 
-import java.util.Arrays;
-
-public class ResultAnalyzer 
-{
+public class ResultAnalyzer {
 	private Board board;
 	private ResultType result;
 	private Cell[] cells;
-	private boolean isWinned=false;
+	private boolean isWinned = false;
+
 	public ResultAnalyzer(Board board) {
-		this.board=board;
-		this.result=result;
-		
+		this.board = board;
+		this.result = ResultType.PROGRESS;
+		this.cells = this.board.getBoard();
 	}
-	
-	public ResultType horizontalWinCheck() {
-		Cell[] cells = this.board.getBoard();
-		for(int i=0;i<3;i++) 
-		{
-			System.out.println("heklp");
-			if(this.cells[i*3].getMark()==this.cells[(i*3)+1].getMark() && this.cells[(i*3)+1].getMark()==this.cells[(i*3)+2].getMark()  )
-					{
-						System.out.println("Inside if");
-						this.result=ResultType.WINNER;
-						System.out.println(this.result);
-						
-					}
-			
+
+	public void horizontalWinCheck() {
+		for (int i = 0; i < 3; i++) {
+			if (this.cells[i * 3].getMark() == this.cells[(i * 3) + 1].getMark()
+					&& this.cells[(i * 3) + 1].getMark() == this.cells[(i * 3) + 2].getMark()
+					&& this.cells[i * 3].getMark() != MarkType.EMPTY) {
+				this.setResult(ResultType.WINNER);
+			}
 		}
-		return this.result;
 	}
-	
-	
 
-
-	public ResultType verticalWinCheck() {
-		for(int i=0;i<3;i++) 
-		{
-			if(this.board.getCells()[i]==this.board.getCells()[i+3] && this.board.getCells()[i+3]==this.board.getCells()[i+6]  )
-					{
-						this.setResult(ResultType.WINNER );
-					}
+	public void verticalWinCheck() {
+		for (int i = 0; i < 3; i++) {
+			if (this.cells[i].getMark() == this.cells[i + 3].getMark()
+					&& this.cells[i + 3].getMark() == this.cells[i + 6].getMark()
+					&& this.cells[i].getMark() != MarkType.EMPTY) {
+				this.setResult(ResultType.WINNER);
+			}
 		}
-		return this.result;
 	}
-
-	
-	
-	
-	
-	
-	
-	
 
 	public ResultType getResult() {
 		return result;
@@ -66,74 +45,38 @@ public class ResultAnalyzer
 		return "ResultAnalyzer [board=" + board + ", result=" + result + "]";
 	}
 
-	public ResultType horizontalWinCheck_firstRowCheck() {
-		this.cells = this.board.getBoard();
-			if(this.cells[0].getMark()==this.cells[1].getMark() && this.cells[1].getMark()==this.cells[2].getMark()  )
-					{
-						System.out.println("Inside if");
-						this.result=ResultType.WINNER;
-						System.out.println(this.result);
-						this.isWinned=true;
-					}
-		return this.result;
-	}
-	
-	public ResultType horizontalWinCheck_secondRowCheck() {
-		this.cells = this.board.getBoard();
-			if(this.cells[3].getMark()==this.cells[4].getMark() && this.cells[4].getMark()==this.cells[5].getMark()  )
-					{
-						System.out.println("Inside if");
-						this.result=ResultType.WINNER;
-						System.out.println(this.result);
-						this.isWinned=true;
-					}
-		return this.result;
-	}
-	public ResultType horizontalWinCheck_thirdRowCheck() {
-		this.cells = this.board.getBoard();
-			if(this.cells[6].getMark()==this.cells[7].getMark() && this.cells[7].getMark()==this.cells[8].getMark()  )
-					{
-						System.out.println("Inside if");
-						this.result=ResultType.WINNER;
-						System.out.println(this.result);
-						this.isWinned=true;
-					}
-		return this.result;
+	public static void displayBoard(Board board) {
+		Cell[] cells = board.getCells();
+		for (int i = 0; i < 3; i++) {
+			System.out.println(
+					"|" + cells[i * 3].getMark() + "|" + cells[(i * 3) + 1] + "|" + cells[(i * 3) + 2] + "|" + "\n");
+		}
+
 	}
 
-	public ResultType verticalWinCheck_firstColumn() {
-		this.cells = this.board.getBoard();
-		if(this.cells[0].getMark()==this.cells[3].getMark() && this.cells[3].getMark()==this.cells[6].getMark()  )
-				{
-					System.out.println("Inside if");
-					this.result=ResultType.WINNER;
-					System.out.println(this.result);
-					this.isWinned=true;
-				}
-	return this.result;
+	public void diagonalWinCheck() {
+		if (this.cells[0].getMark() == this.cells[4].getMark() && this.cells[4].getMark() == this.cells[8].getMark()
+				&& this.cells[0].getMark() != MarkType.EMPTY
+				|| this.cells[2].getMark() == this.cells[4].getMark()
+						&& this.cells[4].getMark() == this.cells[6].getMark()
+						&& this.cells[2].getMark() != MarkType.EMPTY && this.cells[4].getMark() != MarkType.EMPTY) {
+			this.result = ResultType.WINNER;
+
+		}
 	}
-	
-	public ResultType verticalWinCheck_secondColumn() {
-		this.cells = this.board.getBoard();
-		if(this.cells[0].getMark()==this.cells[3].getMark() && this.cells[3].getMark()==this.cells[6].getMark()  )
-				{
-					System.out.println("Inside if");
-					this.result=ResultType.WINNER;
-					System.out.println(this.result);
-					this.isWinned=true;
-				}
-	return this.result;
-	}
-	public ResultType verticalWinCheck_thirdColumn() {
-		this.cells = this.board.getBoard();
-		if(this.cells[0].getMark()==this.cells[3].getMark() && this.cells[3].getMark()==this.cells[6].getMark()  )
-				{
-					System.out.println("Inside if");
-					this.result=ResultType.WINNER;
-					System.out.println(this.result);
-					this.isWinned=true;
-				}
-	return this.result;
-	}
+
+	public ResultType analyzeResult() { 
+		 diagonalWinCheck(); 
+		 horizontalWinCheck(); 
+		 verticalWinCheck(); 
+		 if (result !=ResultType.WINNER) { 
+		  if (!board.isBoardFull()) { 
+		   result = ResultType.PROGRESS; 
+		  } else if(board.isBoardFull()){ 
+		   result = ResultType.DRAW; 
+		  } 
+		 } 
+		 return result; 
+		}
 
 }

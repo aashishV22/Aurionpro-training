@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="com.aurionpro.model.CarFactory"/>
-    <fullyQualifiedTypeName name="com.aurionpro.test.CarFactoryTest"/>
-    <fullyQualifiedTypeName name="com.aurionpro.model.ECarType"/>
-    <fullyQualifiedTypeName name="com.aurionpro.model.Maruti"/>
-    <fullyQualifiedTypeName name="com.aurionpro.model.ICars"/>
-    <fullyQualifiedTypeName name="com.aurionpro.model.MarutiFactory"/>
-    <fullyQualifiedTypeName name="com.aurionpro.model.ICarFactory"/>
-    <fullyQualifiedTypeName name="java.lang.String"/>
-    <fullyQualifiedTypeName name="com.aurionpro.model.LaptopBuilder"/>
-    <fullyQualifiedTypeName name="com.aurionpro.model.IGadgets"/>
     <fullyQualifiedTypeName name="com.aurionpro.model.ShoppingCart"/>
     <fullyQualifiedTypeName name="com.aurionpro.model.Biscuit"/>
     <fullyQualifiedTypeName name="com.aurionpro.model.Hat"/>
@@ -55,9 +45,19 @@
     <fullyQualifiedTypeName name="com.aurionpro.model.IInternet"/>
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="com.aurionpro.model.ProxyInternet"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="java.sql.Array"/>
     <fullyQualifiedTypeName name="com.aurionpro.model.CircleShapeFactory"/>
     <fullyQualifiedTypeName name="com.aurionpro.model.IShape"/>
     <fullyQualifiedTypeName name="java.util.HashMap"/>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="java.sql.DriverManager"/>
+    <fullyQualifiedTypeName name="com.mysql.cj.xdevapi.Statement"/>
+    <fullyQualifiedTypeName name="java.sql.Statement"/>
+    <fullyQualifiedTypeName name="com.aurionpro.model.Student"/>
+    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="java.sql.ResultSet"/>
+    <fullyQualifiedTypeName name="com.mysql.cj.x.protobuf.MysqlxDatatypes.Scalar.String"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
 </qualifiedTypeNameHistroy>

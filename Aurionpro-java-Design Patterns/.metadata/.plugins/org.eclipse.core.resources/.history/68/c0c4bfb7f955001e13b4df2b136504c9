@@ -1,9 +1,0 @@
-package com.aurionpro.model;
-
-public class WhatsAppNotifier implements INotifier
-{
-	@Override
-	public void notifyUser(Account account) {
-		System.out.println("Email Notification\n"+account);
-	}
-}
