@@ -10,17 +10,21 @@
 </head>
 <body>
 <h1>Hello inside resultt</h1>
-<%	
+<%-- <%	
 	List styles =(List)request.getAttribute("styles");
 	Iterator iterator = styles.iterator();
 	while(iterator.hasNext()) {
 	out.println("<br> Try-> "+iterator.next());
 }
 %>
-
-
+ --%>
+ 
+ 
+ 
+ 
+<h2 var="selection" value="${selection}" }>	 Color selected:- ${selection}    </h2>
 <c:forEach var="style" items="${styles}">
-	<p>${style}   </p>  
+	<p>Try-> ${style}   </p>  
 </c:forEach>
 
 </body>

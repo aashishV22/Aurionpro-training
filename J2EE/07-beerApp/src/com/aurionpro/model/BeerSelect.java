@@ -38,11 +38,11 @@ public class BeerSelect extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	public void doPost(HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException {
-//			response.setContentType("text/html");
-//			PrintWriter out = response.getWriter();
+			response.setContentType("text/html");
+			PrintWriter out = response.getWriter();
 //			out.println("Beer Selection Advice <br>");
 			String c =request.getParameter("color");
-//			out.println("<br>Got Beer Color: "+c);
+			out.println("<br>Got Beer Color: "+c);
 					
 			BeerExpert beerExpert = new BeerExpert(); 
 			List results= beerExpert.getBrands(c);
@@ -50,6 +50,8 @@ public class BeerSelect extends HttpServlet {
 			
 			RequestDispatcher view = request.getRequestDispatcher("reult.jsp");
 			request.setAttribute("styles", results);
+			request.setAttribute("selection", c);
+
 			view.forward(request, response);
 
 			
