@@ -1,6 +1,8 @@
 CREATE TABLE StudentNew (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL
+    name VARCHAR(25) ,
+    last_name varchar(20),
+    email varchar(100)
 );
 CREATE TABLE CourseNew (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -30,7 +32,7 @@ INSERT INTO Student_Course (student_id, course_id) VALUES (2, 3);
 INSERT INTO Student_Course (student_id, course_id) VALUES (3, 1);
 INSERT INTO Student_Course (student_id, course_id) VALUES (3, 2);
 INSERT INTO Student_Course (student_id, course_id) VALUES (3, 3);
-INSERT INTO Student_Course (student_id, course_id) VALUES (3, 3);
+
 
 
 select teacher.* , courses.* from studentdb_college.courses inner join teacher where teacher.teacher_id = courses.teacher_id;
