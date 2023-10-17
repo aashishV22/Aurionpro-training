@@ -31,22 +31,34 @@ table, th, td {
 	${student}
 </c:forEach>
 
-<table class="table table-striped table-hover">
+<table class="table  table-hover">
 <thead>
 <th>Student id</th>
 <th>First  Name</th>
 <th>Last  Name</th>
 <th>Email</th>
+<th>Action</th>
 </thead>
 
 <c:forEach var="student" items="${allNewStudents}">
+	<c:url var="updateLink" value="JdbcTest">
+            <c:param name="action" value="update" />
+            <c:param name="id" value="${student.id}" />
+	</c:url>
 	<tr class="table-active">
 	<td>${student.id} </td>
 	<td>${student.firstName}</td> 
 	<td>${student.lastName}</td> 
 	<td>${student.email}</td>
+	<td>  		
+		<a href="${updateLink}" class="btn btn-secondary">Update Student  </a>
+	</td>
+	
+	
 	</tr>
 </c:forEach>
 </table>
+
+<a href="add-Student.jsp" class="btn btn-primary">Add Student </a>
 </body>
 </html>
