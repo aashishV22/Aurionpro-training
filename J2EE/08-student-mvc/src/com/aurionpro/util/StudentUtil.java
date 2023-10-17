@@ -27,25 +27,64 @@ public class StudentUtil {
 		try 
 		{
 			conn=dataSource.getConnection();
-			String sql="SELECT * FROM studentnew";
+			String sql="select * from studentnew as s right  join student_course on s.id=student_course.student_id right  join coursenew on student_course.course_id=coursenew.id order by s.id";
 			stmnt = conn.createStatement();
 			result = stmnt.executeQuery(sql);
-			
 			while(result.next()) {
 				int id= result.getInt("id");
-				String firstName= result.getString("name");
-				String lastName= result.getString("last_name");
-				String email= result.getString("email");
+				String firstName = result.getString("name");
+				String lastName  = result.getString("last_name");
+				String email     = result.getString("email");
+				String course    = result.getString("course_name");
+				List<String> courses=new ArrayList<String>();
+				courses.add(course);
+				Student temp=new Student(id, firstName, lastName, email, courses);
 				
-				allStudents.add(new Student(id,firstName,lastName,email));
-			}
+				if(allStudents.size()==0) {
 			
-		}catch(SQLException e) {
-			e.getMessage();
-		}
-		finally {
-			close(conn,stmnt,result);
-		}
+					System.out.println("inside 1st if"+courses);
+					allStudents.add(new Student(id,firstName,lastName,email,courses));
+					System.out.println(allStudents);
+					System.out.println("********************************************");
+				}
+				for(int i=0;i<allStudents.size();i++) {
+					System.out.println("Start of for loop-"+i);
+					System.out.println(allStudents);
+					if(allStudents.get(i).getId()==temp.getId()) 
+					{	
+						courses=allStudents.get(i).getCourses();
+						System.out.println("Indise 2nd ifs if-else "+courses);
+						System.out.println(allStudents.get(i));
+						System.out.println(i);
+						if(!courses.contains(course)) 
+						{
+							courses.add(course);
+							allStudents.get(i).setCourses(courses);
+						}
+						System.out.println("This is temp"+ temp);
+						System.out.println(allStudents.get(i));
+					}else if(allStudents.get(i).getId()!=id) 
+					{
+						System.out.println("inside 3rd if-else");
+						courses=new ArrayList<String>();
+						courses.add(course);
+//						System.out.println(id);
+						allStudents.add(new Student(id,firstName,lastName,email,courses));
+						break;
+					}
+					System.out.println("***********End of one oteration****************");
+//						else if(x.getId()==id) 
+//					{	
+//						courses=x.getCourses();
+//						courses.add(course);
+//						x.setCourses(courses);
+//					}
+				}
+				System.out.println("===================End of while==========================");
+				
+			}
+		}catch(SQLException e) {	e.getMessage();				}
+		finally 			   {	close(conn,stmnt,result);	}
 		return allStudents;
 	}
 	
@@ -70,10 +109,8 @@ public class StudentUtil {
 			stmnt.setString(3, student.getEmail())	  ;
 			stmnt.execute();
 			
-		}
-		catch(SQLException e) 	{	e.getMessage();		}
+		}catch(SQLException e) 	{	e.getMessage();		}
 		finally 				{close(conn,stmnt,null);}
-		
 	}
 
 	public Student getStudentById(int id) throws SQLException {
@@ -97,10 +134,9 @@ public class StudentUtil {
 				tempStudent=new Student(id,firstName, lastName, email);
 			}
 		}
-		catch(SQLException e) {	e.getMessage();		}
+		catch(SQLException e) {	e.getMessage();				}
 		finally				  {	close(conn,stmnt,result);	}
 		return tempStudent;
-		
 	}
 
 	public void updateStudent(Student updatedStudent) throws SQLException {
@@ -117,10 +153,25 @@ public class StudentUtil {
 			stmnt.setInt(4, updatedStudent.getId())	  ;
 			stmnt.execute();	
 			
+		}catch(SQLException e) 	{	e.getMessage();		}
+		finally 				{close(conn,stmnt,null);}
+	}
+
+	public void deleteStudent(int id) throws SQLException {
+		Connection conn=null;
+		PreparedStatement stmnt=null;
+		try 
+		{
+			conn=dataSource.getConnection();
+			String sql="DELETE FROM studentnew WHERE (id = ?)";
+			stmnt = conn.prepareStatement(sql)        ;
+			stmnt.setInt(1, id)	  ;
+			stmnt.execute();	
 		}
 		catch(SQLException e) 	{	e.getMessage();		}
 		finally 				{close(conn,stmnt,null);}
-		
 	}
 	
+
+
 }

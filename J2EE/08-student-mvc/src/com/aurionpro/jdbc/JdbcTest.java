@@ -53,8 +53,8 @@ public class JdbcTest extends HttpServlet {
 	
 	}
     
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
 		String actionParameter = request.getParameter("action");
 //		System.out.println(actionParameter);
 		if(actionParameter==null) {
@@ -63,83 +63,76 @@ public class JdbcTest extends HttpServlet {
 		switch(actionParameter) 
 		{
 		case "list":
-			try 
-			{
-				gotStudents(request,response);		
-			
-			}										  catch (ServletException e) {e.printStackTrace();} 
+			try {	gotStudents(request,response);		}										  
+													  catch (ServletException e) {e.printStackTrace();} 
 													  catch (IOException e) 	 {e.printStackTrace();} 
 													  catch (SQLException e)	 {e.printStackTrace();}	
 			break;
 
 		case "add":
-			try 
-			{
-				addNewStudent(request,response);
-			} 										  catch (SQLException e) {e.printStackTrace();}
+			try {	addNewStudent(request,response);	}
+													  catch (SQLException e) {e.printStackTrace();}
 			break;
 		
 		case "update":
-			try 
-			{
-				getStudentForUpdate(request,response);
-			} 										  catch (SQLException e1) {e1.printStackTrace();}
+			try	{	getStudentForUpdate(request,response);}
+													  catch (SQLException e1) {e1.printStackTrace();}
 			break;
-
+		case "delete":
+			try	{	deleteStudent(request,response);}
+													  catch (SQLException e1) {e1.printStackTrace();}
+			break;	
 		case "updated":
-			try 
-			{
-				updateStudent(request,response);
-			} 										  catch (Exception e1) {e1.printStackTrace();}
+			try {	updateStudent(request,response);	}
+													  catch (Exception e1) {e1.printStackTrace();}
 			break;
 		default :
-			try 
-			{	gotStudents(request,response);	}	  catch (ServletException | IOException | SQLException e) {e.printStackTrace();}	
+			try	{	gotStudents(request,response);	} catch (ServletException | IOException | SQLException e) {e.printStackTrace();}	
 		}
 		
 		
 	}
 
+	private void deleteStudent(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+		int id = Integer.parseInt(request.getParameter("id"));
+		util.deleteStudent(id);
+//		System.out.println(id);
+		gotStudents(request, response);		
+	}
+
 	private void updateStudent(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 		int id=Integer.parseInt(request.getParameter("id"));
 		String firstName = request.getParameter("firstName");
-		String lastName = request.getParameter("lastName");
-		String email = request.getParameter("email");
-		Student updatedStudent=new Student(id, firstName, lastName, email);
+		String lastName  = request.getParameter("lastName");
+		String email     = request.getParameter("email");
+		Student updatedStudent = new Student(id, firstName, lastName, email);
 		util.updateStudent(updatedStudent);
-		System.out.println(updatedStudent);
+//		System.out.println(updatedStudent);
 		gotStudents(request, response);
-
 	}
 
 	private void getStudentForUpdate(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
 		int id=Integer.parseInt(request.getParameter("id"));
-		
 		Student student=util.getStudentById(id);
-		System.out.println(student);
+//		System.out.println(student);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/update-studentForm.jsp");
 		request.setAttribute("particularStudent", student);
-		
 		dispatcher.forward(request, response);
 	}
 
 	private void gotStudents(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException{
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
-		List<Student> allStudents= util.getStudents(dataSource);
+		List<Student> allStudents    = util.getStudents(dataSource);
+		System.out.println(allStudents);
 		request.setAttribute("allNewStudents", allStudents);
 		dispatcher.forward(request, response);
-		
-		
-//		for(Student x:allStudents) {
-//			System.out.println(x);
-//		}
 	}
 	
 	private void addNewStudent(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
 		String firstName = request.getParameter("firstName");
-		String lastName = request.getParameter("lastName");
-		String email = request.getParameter("email");
-		Student student=new Student(firstName,lastName,email);
+		String lastName  = request.getParameter("lastName");
+		String email     = request.getParameter("email");
+		Student student  = new Student(firstName,lastName,email);
 		
 		util.addStudent(student);
 //		System.out.println(student);
