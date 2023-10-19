@@ -55,12 +55,13 @@ li a:hover:not(.active) {
 
 <ul>
   <li><a class="active" href="JdbcTest">Home</a></li>
-  <li><a onclick="myFunction()" href="#">Update</a></li>
+  <li><a href="userLogin.jsp" onclick="myFunction()">Logout</a></li>
+
 </ul>
 <div class="container">
 <br><br>
 <div>
-<form action="JdbcTest">
+<form action="Controller">
       <input type="text" placeholder="Enter Name..." name="searchName">
       <input type="hidden" name="action" value="search" >
       <select name="columnName" id="find">
@@ -69,45 +70,39 @@ li a:hover:not(.active) {
   		<option value="Last Name">Last Name</option>
 	  	<option value="Student Email">Email</option>
 	</select>
-	  <button type="submit" class="btn btn-primary">Search  Student </button>
+	  <button type="submit" class="btn btn-primary">Search  User </button>
     </form>
 </div>
 <br><br>
 <table class="table  table-hover">
 <thead>
-<th>Student id</th>
-<th>First  Name</th>
-<th>Last  Name</th>
-<th>Email</th>
-<th><center> Action</center></th>
-<th><center> Courses</center></th>
+<th>Account Number</th>
+<th>Account Type</th>
+<th>Account Balance</th>
+
 
 </thead>
 
-<c:forEach var="student" items="${allNewStudents}">
-	<c:url var="updateLink" value="JdbcTest">
+<c:forEach var="account" items="${allAccounts}">
+	<c:url var="updateLink" value="Controller">
             <c:param name="action" value="update" />
-            <c:param name="id" value="${student.id}" />
+            <c:param name="id" value="${account.user_id}" />
 	</c:url>
 	<c:url var="deleteLink" value="JdbcTest">
             <c:param name="action" value="delete" />
-            <c:param name="id" value="${student.id}" />
+            <c:param name="id" value="${account.user_id}" />
 	</c:url>
 	
 	<tr class="table-active">
-	<td name="id">${student.id} </td>
-	<td name="firstName">${student.firstName}</td> 
-	<td name="lastName">${student.lastName}</td> 
-	<td name="email">${student.email}</td>
+	<td name="number">  ${account.number}  </td>
+	<td name="type">	${account.type}    </td> 
+	<td name="balance"> ${account.balance} </td> 
 	<td>  		
-		<a href="${updateLink}" class="btn btn-secondary">Update Student  </a>		
-		<a href="${deleteLink}" class="btn btn-secondary">Delete Student  </a>
+		<a href="${updateLink}" class="btn btn-secondary">Send Money  </a>		
 	</td>
-	<td>${student.courses }	</td>
 	</tr>
 </c:forEach>
 </table>
-<a href="add-Student.jsp" class="btn btn-primary">Add Student </a>
 
 </div>
 

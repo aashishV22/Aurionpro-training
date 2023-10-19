@@ -42,29 +42,29 @@ public class StudentUtil {
 				boolean isEntryDone=false;
 				if(allStudents.size()==0) {
 			
-					System.out.println("inside 1st if"+courses);
+//					System.out.println("inside 1st if"+courses);
 					allStudents.add(new Student(id,firstName,lastName,email,courses));
-					System.out.println(allStudents);
-					System.out.println("********************************************");
+//					System.out.println(allStudents);
+//					System.out.println("********************************************");
 				}
 				while(!isEntryDone) {
-					System.out.println("Start of for loop-"+allStudents.get(allStudents.size()-1));
-					System.out.println(allStudents);
+//					System.out.println("Start of for loop-"+allStudents.get(allStudents.size()-1));
+//					System.out.println(allStudents);
 					if(allStudents.get(allStudents.size()-1).getId()==temp.getId()) 
 					{	
 						courses=allStudents.get(allStudents.size()-1).getCourses();
-						System.out.println("Indise 2nd ifs if-else "+courses);
-						System.out.println(allStudents.get(allStudents.size()-1));
+//						System.out.println("Indise 2nd ifs if-else "+courses);
+//						System.out.println(allStudents.get(allStudents.size()-1));
 						if(!courses.contains(course)) 
 						{
 							courses.add(course);
 							allStudents.get(allStudents.size()-1).setCourses(courses);
 						}
-						System.out.println(allStudents.get(allStudents.size()-1));
+//						System.out.println(allStudents.get(allStudents.size()-1));
 						isEntryDone=true;
 					}else if(allStudents.get(allStudents.size()-1).getId()!=id) 
 					{
-						System.out.println("inside 3rd if-else");
+//						System.out.println("inside 3rd if-else");
 						courses=new ArrayList<String>();
 						courses.add(course);
 //						System.out.println(id);
@@ -72,15 +72,9 @@ public class StudentUtil {
 						isEntryDone=true;
 						break;
 					}
-					System.out.println("***********End of one oteration****************");
-//						else if(x.getId()==id) 
-//					{	
-//						courses=x.getCourses();
-//						courses.add(course);
-//						x.setCourses(courses);
-//					}
+//					System.out.println("***********End of one oteration****************");
 				}
-				System.out.println("===================End of while==========================");
+//				System.out.println("===================End of while==========================");
 				
 			}
 		}catch(SQLException e) {	e.getMessage();				}

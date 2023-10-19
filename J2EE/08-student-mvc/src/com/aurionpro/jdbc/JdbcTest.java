@@ -86,6 +86,10 @@ public class JdbcTest extends HttpServlet {
 			try {	updateStudent(request,response);	}
 													  catch (Exception e1) {e1.printStackTrace();}
 			break;
+		case "search":
+			try {	searchStudent(request,response);	}
+													  catch (Exception e1) {e1.printStackTrace();}
+			break;
 		default :
 			try	{	gotStudents(request,response);	} catch (ServletException | IOException | SQLException e) {e.printStackTrace();}	
 		}
@@ -93,11 +97,33 @@ public class JdbcTest extends HttpServlet {
 		
 	}
 
+	private void searchStudent(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+		String value=request.getParameter("searchName");
+		String columnName=request.getParameter("columnName");
+		List<Student> searched=new ArrayList<Student>();
+//		if(columnName=="id") {
+//			int searchId=Integer.parseInt(value);
+//			System.out.println("inside id if"+searchId);
+//			Student searchedById= util.getStudentById(searchId);
+//			searched.add(searchedById);
+//		}
+		if(value=="") {
+			response.sendRedirect(request.getContextPath()+"/JdbcTest");
+		}
+//		System.out.println(name);
+		searched= util.search(value,columnName);
+//		System.out.println("inside controller"+searched);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+		request.setAttribute("allNewStudents", searched);
+		dispatcher.forward(request, response);
+	
+	}
+
 	private void deleteStudent(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 		int id = Integer.parseInt(request.getParameter("id"));
+		System.out.println("Inside controller"+id);
 		util.deleteStudent(id);
-//		System.out.println(id);
-		gotStudents(request, response);		
+		response.sendRedirect(request.getContextPath()+"/JdbcTest");
 	}
 
 	private void updateStudent(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
@@ -108,7 +134,8 @@ public class JdbcTest extends HttpServlet {
 		Student updatedStudent = new Student(id, firstName, lastName, email);
 		util.updateStudent(updatedStudent);
 //		System.out.println(updatedStudent);
-		gotStudents(request, response);
+		response.sendRedirect(request.getContextPath()+"/JdbcTest");
+//		gotStudents(request, response);
 	}
 
 	private void getStudentForUpdate(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
@@ -123,10 +150,11 @@ public class JdbcTest extends HttpServlet {
 	private void gotStudents(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException{
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
 		List<Student> allStudents    = util.getStudents(dataSource);
-		System.out.println(allStudents);
+//		System.out.println(allStudents);
 		request.setAttribute("allNewStudents", allStudents);
 		dispatcher.forward(request, response);
 	}
+	
 	
 	private void addNewStudent(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
 		String firstName = request.getParameter("firstName");
@@ -136,7 +164,7 @@ public class JdbcTest extends HttpServlet {
 		
 		util.addStudent(student);
 //		System.out.println(student);
-		gotStudents(request, response);
+		response.sendRedirect(request.getContextPath()+"/JdbcTest");
 	}
 
 	/**

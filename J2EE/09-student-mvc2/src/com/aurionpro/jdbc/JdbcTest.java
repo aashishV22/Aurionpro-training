@@ -123,7 +123,7 @@ public class JdbcTest extends HttpServlet {
 	private void gotStudents(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException{
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
 		List<Student> allStudents    = util.getStudents(dataSource);
-		System.out.println(allStudents);
+//		System.out.println(allStudents);
 		request.setAttribute("allNewStudents", allStudents);
 		dispatcher.forward(request, response);
 	}

@@ -60,54 +60,55 @@ li a:hover:not(.active) {
 <div class="container">
 <br><br>
 <div>
-<form action="JdbcTest">
+<form action="EmployeeContoller">
       <input type="text" placeholder="Enter Name..." name="searchName">
       <input type="hidden" name="action" value="search" >
       <select name="columnName" id="find">
-  		<option value="StudentId">id</option>
+  		<option value="EmployeeId">id</option>
   		<option value="First Name">First name</option>
   		<option value="Last Name">Last Name</option>
-	  	<option value="Student Email">Email</option>
+	  	<option value="Email">Email</option>
 	</select>
-	  <button type="submit" class="btn btn-primary">Search  Student </button>
+	  <button type="submit" class="btn btn-primary">Search  Employee </button>
     </form>
 </div>
 <br><br>
 <table class="table  table-hover">
 <thead>
-<th>Student id</th>
+<th>Employee id</th>
 <th>First  Name</th>
 <th>Last  Name</th>
 <th>Email</th>
+<th>Date of Birth</th>
+<th>Date of Joining</th>
 <th><center> Action</center></th>
-<th><center> Courses</center></th>
-
 </thead>
 
-<c:forEach var="student" items="${allNewStudents}">
-	<c:url var="updateLink" value="JdbcTest">
+<c:forEach var="employee" items="${allEmployees}">
+	<c:url var="updateLink" value="EmployeeController">
             <c:param name="action" value="update" />
-            <c:param name="id" value="${student.id}" />
+            <c:param name="id" value="${employee.id}" />
 	</c:url>
-	<c:url var="deleteLink" value="JdbcTest">
+	<c:url var="deleteLink" value="EmployeeController">
             <c:param name="action" value="delete" />
-            <c:param name="id" value="${student.id}" />
+            <c:param name="id" value="${employee.id}" />
 	</c:url>
 	
 	<tr class="table-active">
-	<td name="id">${student.id} </td>
-	<td name="firstName">${student.firstName}</td> 
-	<td name="lastName">${student.lastName}</td> 
-	<td name="email">${student.email}</td>
+	<td name="id">${employee.id} </td>
+	<td name="firstName">${employee.firstName}</td> 
+	<td name="lastName">${employee.lastName}</td> 
+	<td name="email">${employee.email}</td>
+	<td name="dob">${employee.dob}</td>
+	<td name="doj">${employee.doj}</td>
 	<td>  		
-		<a href="${updateLink}" class="btn btn-secondary">Update Student  </a>		
-		<a href="${deleteLink}" class="btn btn-secondary">Delete Student  </a>
+		<a href="${updateLink}" class="btn btn-secondary">Update Employee  </a>		
+		<a href="${deleteLink}" class="btn btn-secondary">Delete Employee  </a>
 	</td>
-	<td>${student.courses }	</td>
 	</tr>
 </c:forEach>
 </table>
-<a href="add-Student.jsp" class="btn btn-primary">Add Student </a>
+<a href="add-Employee.jsp" class="btn btn-primary">Add Employee </a>
 
 </div>
 
