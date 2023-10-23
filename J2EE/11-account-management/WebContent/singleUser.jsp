@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 <link 
@@ -22,83 +23,84 @@ table, th, td {
   border:1px solid black;
 }
 ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
   overflow: hidden;
   background-color: #333;
-}
-
-li {
-  float: left;
-}
-
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-li a:hover:not(.active) {
-  background-color: #111;
 }
 
 .active {
   background-color: #04AA6D;
 }
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap:wrap;
+  }
 </style>
 </head>
 
 <body>
-
 <ul>
-  <li><a class="active" href="JdbcTest">Home</a></li>
-  <li><a href="userLogin.jsp" onclick="myFunction()">Logout</a></li>
-
+<div class="button-container container">
+ 	<li><form action="singleUserController" method="post">		
+			<input type="hidden" name="userId" 	value="${userId}">
+			<input type="hidden" name="action" value="gotoAccount">
+	    	<button class="active">Home</button>
+	     </form>
+	</li>
+	<li><form action="userLogin.jsp">
+	    	<button onclick="myFunction()" >LogOut</button></form>
+	</li>
+</div>
 </ul>
 <div class="container">
-<br><br>
-<div>
-<form action="Controller">
-      <input type="text" placeholder="Enter Name..." name="searchName">
-      <input type="hidden" name="action" value="search" >
-      <select name="columnName" id="find">
-  		<option value="StudentId">id</option>
-  		<option value="First Name">First name</option>
-  		<option value="Last Name">Last Name</option>
-	  	<option value="Student Email">Email</option>
-	</select>
-	  <button type="submit" class="btn btn-primary">Search  User </button>
-    </form>
-</div>
+
+<h1 class="container" name="userWholeName" value="${userName}">${userName} </h1>
 <br><br>
 <table class="table  table-hover">
 <thead>
 <th>Account Number</th>
 <th>Account Type</th>
 <th>Account Balance</th>
-
+<th><center> Action</center></th>
 
 </thead>
 
 <c:forEach var="account" items="${allAccounts}">
-	<c:url var="updateLink" value="Controller">
-            <c:param name="action" value="update" />
-            <c:param name="id" value="${account.user_id}" />
-	</c:url>
-	<c:url var="deleteLink" value="JdbcTest">
-            <c:param name="action" value="delete" />
-            <c:param name="id" value="${account.user_id}" />
-	</c:url>
-	
 	<tr class="table-active">
-	<td name="number">  ${account.number}  </td>
-	<td name="type">	${account.type}    </td> 
-	<td name="balance"> ${account.balance} </td> 
-	<td>  		
-		<a href="${updateLink}" class="btn btn-secondary">Send Money  </a>		
+	<td>  ${account.accountNumber}  </td>
+	<td>  ${account.accountType}    </td> 
+	<td>  ${account.accountBalance} </td> 
+	<td>
+		<div class="button-container">
+		<form action="singleUserController" method="post">
+			<input type="hidden" name="action" value="depositButton">
+			<input type="hidden" name="id" 			  value="${account.user_id}">		
+			<input type="hidden" name="number"  	  value="${account.accountNumber}">
+			<input type="hidden" name="transactioType_id" value="300">
+			<button type="submit" class="btn btn-secondary">Deposit</button>
+		</form>
+			 
+		<form action="singleUserController" method="post">
+			<input type="hidden" name="action" 			  value="withdrawButton">
+			<input type="hidden" name="id" 				  value="${account.user_id}">		
+			<input type="hidden" name="number"  	  	  value="${account.accountNumber}">
+			<input type="hidden" name="transactioType_id" value="301">
+			<button type="submit" class="btn btn-secondary">Withdraw</button>
+		</form>
+		<form action="singleUserController" method="post">
+			<input type="hidden" name="action" 			  value="transferButton">
+			<input type="hidden" name="id" 				  value="${account.user_id}">		
+			<input type="hidden" name="number"  	  	  value="${account.accountNumber}">
+			<input type="hidden" name="transactioType_id" value="302">
+			<button type="submit" class="btn btn-secondary">Transfer</button>
+		</form>
+		<form action="singleUserController" method="post">
+			<input type="hidden" name="action"  value="gotoSingleAccountTransaction">
+			<input type="hidden" name="id" 				  value="${account.user_id}">		
+			<input type="hidden" name="number"  	  	  value="${account.accountNumber}">
+			<button type="submit" class="btn btn-secondary">Transactions</button>
+		</form>
+		</div>
 	</td>
 	</tr>
 </c:forEach>
@@ -113,7 +115,7 @@ li a:hover:not(.active) {
 
 <script type="text/javascript">
 function myFunction() {
-	  alert("First select a student to Update it!");
+	  alert("Logged Out");
 	}
 </script>
 </body>

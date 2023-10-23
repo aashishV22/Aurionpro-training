@@ -61,15 +61,20 @@ span.psw {
 
 <h2>Login Form</h2>
 
-<form action="Controller" method="post">
-
+<form action="singleUserController" method="post">
+	<div class="container">
+		<label for="userType">Select User Type:</label>
+        <select id="userType" name="action">
+        	<option value="login">User</option>
+        	<option value="validateAdmin">Admin</option>
+        </select>
+	</div>
   <div class="container">
     <label for="uname"><b>Username</b></label>
     <input type="text" placeholder="Enter Username" name="uname" required>
 
     <label for="password"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="password" required>
-    <input type="hidden" name="action" value="login">
     <p hidden>  Incorrect password!!!</p>	
     <button type="submit">Login</button>
   </div>
@@ -78,6 +83,8 @@ span.psw {
     <button type="button" class="cancelbtn">Cancel</button>
   </div>
 </form>
+
+<script type="text/javascript" src="userLogin.js"></script>
 
 </body>
 </html>

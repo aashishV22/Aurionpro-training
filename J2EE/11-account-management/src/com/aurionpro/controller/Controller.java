@@ -65,44 +65,44 @@ public class Controller extends HttpServlet {
 													  catch (SQLException e)	 {e.printStackTrace();}	
 			break;
 			
-		case "login":
-			try {	checkUser(request,response);		}										  
-													  catch (ServletException e) {e.printStackTrace();} 
-												  	  catch (IOException e) 	 {e.printStackTrace();} 
-												  	  catch (SQLException e)	 {e.printStackTrace();}	
-			break;
+//		case "login":
+//			try {	checkUser(request,response);		}										  
+//													  catch (ServletException e) {e.printStackTrace();} 
+//												  	  catch (IOException e) 	 {e.printStackTrace();} 
+//												  	  catch (SQLException e)	 {e.printStackTrace();}	
+//			break;
 			
 		default :
 			try	{	gotUsers(request,response);	} 	  catch (ServletException | IOException | SQLException e) {e.printStackTrace();}	
 		}		
 	}
 
-	private void checkUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
-		String userName = request.getParameter("uname");
-		String password = request.getParameter("password");
-		boolean isUser  = util.checkUser(userName,password);
-		if(isUser) {
-			
-//			response.sendRedirect(request.getContextPath()+"/singleUser.jsp");
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/singleUser.jsp");
-			dispatcher.forward(request, response);
-
-
-			System.out.println("its right");
-		}else {
-			System.out.println("its wrong");
-
-			response.sendRedirect(request.getContextPath()+"/userLogin.jsp");
-			response.setContentType("text/html");
-			PrintWriter out1 = response.getWriter();
-			out1.println("<p>wrong Password </p>");
-
-		}
-	}
+//	private void checkUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+//		String userName = request.getParameter("uname");
+//		String password = request.getParameter("password");
+//		boolean isUser  = util.checkUser(userName,password);
+//		if(isUser) {
+//			
+////			response.sendRedirect(request.getContextPath()+"/singleUser.jsp");
+//			RequestDispatcher dispatcher = request.getRequestDispatcher("/singleUserController");
+//			
+//			dispatcher.forward(request, response);
+//
+//
+//			System.out.println("its right");
+//		}else {
+//			System.out.println("its wrong");
+//
+//			response.sendRedirect(request.getContextPath()+"/userLogin.jsp");
+//			response.setContentType("text/html");
+//			PrintWriter out1 = response.getWriter();
+//			out1.println("<p>wrong Password </p>");
+//
+//		}
+//	}
 	private void gotUsers(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException{
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
 		List<User> allUsers    = util.getUsers(dataSource);
-		System.out.println(allUsers);
 		request.setAttribute("allUsers", allUsers);
 		dispatcher.forward(request, response);
 	}

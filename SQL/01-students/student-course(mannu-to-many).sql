@@ -35,13 +35,13 @@ INSERT INTO Student_Course (student_id, course_id) VALUES (3, 3);
 
 
 
-select teacher.* , courses.* from studentdb_college.courses inner join teacher where teacher.teacher_id = courses.teacher_id;
+select teacher.* , courses.* from studentdb_college.courses inner join teacher on teacher.teacher_id = courses.teacher_id where teacher.teacher_id=1 ;
 
 
 select * 
 from studentnew as s right  join student_course 
 on s.id=student_course.student_id
-right  join coursenew on student_course.course_id=coursenew.id; 
+right  join coursenew on student_course.course_id=coursenew.id order by s.id; 
 -- where s.id=4;
 
 -- select * from studentdb_college.coursenew right join student_course on  coursenew.id=student_course.course_id; 
