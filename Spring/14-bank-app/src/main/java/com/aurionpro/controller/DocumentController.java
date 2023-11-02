@@ -40,7 +40,7 @@ public class DocumentController
 			String fileDownloadUri = ServletUriComponentsBuilder
 					.fromCurrentContextPath()
 					.path("/document/files/")
-					.path(String.valueOf(store.getDocumentId()))
+					.path(String.valueOf(store.getRequestId()))
 					.toUriString();
 			System.out.println(fileDownloadUri);
 			store.setAccountTypeId(data.getAccountTypeId());
@@ -71,11 +71,12 @@ public class DocumentController
 												String fileDownloadUri = ServletUriComponentsBuilder
 																			.fromCurrentContextPath()
 																			.path("/document/files/")
-																			.path(dbFile.getDocumentId())
+																			.path(String.valueOf(dbFile.getRequestId()))
 																			.toUriString();
 												System.out.println(fileDownloadUri);
 												return new ResponseDocument
 															(		
+																	dbFile.getRequestId(),
 																	dbFile.getCustomerId(),
 																	dbFile.getUploadDate(),
 																	dbFile.getRequestStatus(),
@@ -88,7 +89,7 @@ public class DocumentController
 											}).collect(Collectors.toList());
 	
 		return files;
-	}
+	} 
 	
 	@GetMapping("/files/{id}")
 	  public ResponseEntity<byte[]> getFile(@PathVariable String id) {
@@ -98,30 +99,5 @@ public class DocumentController
 	        .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileDB.getDocumentTitle() + "\"")
 	        .body(fileDB.getData());
 	  }
-
-
-//	public void updateStatus(String status,int requestId) {
-//		if(status.equalsIgnoreCase("approved")) {
-//			documentService.updateStatus(status,requestId);
-//			Document document = documentService.getDocumentByRquestId(requestId);
-//			accountService.createAccount(document.getAccountTypeId(),document.getBalance(),document.getCustomerId());
-//		}else {
-//			documentService.updateStatus(status,requestId);
-//			// document table se row delete ho jaega
-//			
-//		}
-//	}
-
-	  public void updateStatus(String status,int requestId) {
-			if(status.equalsIgnoreCase("approved")) {
-				documentService.updateStatus(status,requestId);
-				Document document = documentService.getDocumentByRquestId(requestId);
-				accountService.createAccount(document.getAccountTypeId(),document.getBalance(),document.getCustomerId());
-			}else {
-				documentService.updateStatus(status,requestId);
-				// document table se row delete ho jaega
-				
-			}
-		}
 
 }

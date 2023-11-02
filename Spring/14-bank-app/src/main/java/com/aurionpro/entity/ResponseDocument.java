@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ResponseDocument 
 {
+	private int requestId;
 	private int customerId;
 	private Date uploadDate;
 	private String requestStatus;

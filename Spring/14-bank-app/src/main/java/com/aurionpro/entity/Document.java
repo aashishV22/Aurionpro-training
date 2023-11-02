@@ -29,14 +29,16 @@ public class Document
 {
 	private static int value=0;
 	
-	@Id
-	@GeneratedValue(generator = "uuid")
-	@GenericGenerator(name = "uuid", strategy = "uuid2")
-	@Column(name="document_id")
-	private String documentId ;
+//	@Id
+//	@GeneratedValue(generator = "uuid")
+//	@GenericGenerator(name = "uuid", strategy = "uuid2")
+//	@Column(name="document_id")
+//	private String documentId ;
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "request_id")
-	private int requestId=value++;
+	private int requestId;
 	
 	@Column(name="request_status")
 	private String   requestStatus="pending"  ;
