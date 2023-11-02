@@ -1,6 +1,7 @@
 package com.aurionpro.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,10 +11,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.aurionpro.entity.Account;
-import com.aurionpro.entity.AccountRequest;
+import com.aurionpro.entity.Admin;
 import com.aurionpro.entity.Customer;
 import com.aurionpro.service.AdminService;
 import com.aurionpro.service.CustomerService;
@@ -23,6 +26,8 @@ import com.aurionpro.service.CustomerService;
 public class CustomerController {
 	@Autowired
 	private CustomerService customerService;
+	@Autowired
+	private DocumentController documentController;
 	
 	@GetMapping("/customers")
 	public ResponseEntity<List<Customer>> getAllCustomers(){
@@ -36,12 +41,18 @@ public class CustomerController {
 		return new ResponseEntity<>(addedCustomer,HttpStatus.CREATED);
 	}
 	
-//	@PostMapping("/customers/{customerId}/accountCreate")
-//	public ResponseEntity<AccountRequest> addAccountRequest(@PathVariable int customerId, @RequestBody Account account)
-//	{
-//		Account addedCustomer=customerService.addCustomer(customer);
-//		return new ResponseEntity<>(addedCustomer,HttpStatus.CREATED);
-//	}
+	@GetMapping("/customers/{customerId}")
+	public ResponseEntity<Customer> getUserById(@PathVariable int customerId){
+		Customer customer = customerService.findById(customerId);
+		return new ResponseEntity<>(customer,HttpStatus.OK);
+	}
+	
+	@PostMapping("/customers/{customerId}/accountType/{accountTypeId}/accountCreate")
+	public ResponseEntity<String> addAccountRequest(@PathVariable int customerId,@PathVariable int accountTypeId,@RequestParam("file") MultipartFile file)
+	{
+		String uploadFile = documentController.uploadFile(file,customerId,accountTypeId);
+		return new ResponseEntity<String>(uploadFile,HttpStatus.OK);
+	}
 	
 	
 }

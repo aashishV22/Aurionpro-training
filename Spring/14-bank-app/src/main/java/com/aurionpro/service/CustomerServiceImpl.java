@@ -1,6 +1,7 @@
 package com.aurionpro.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,12 @@ public class CustomerServiceImpl implements CustomerService{
 	@Override
 	public Customer addCustomer(Customer customer) {
 		return customerRepo.save(customer);
+	}
+
+
+	@Override
+	public Customer findById(int customerId) {
+		return customerRepo.findById(customerId).get();
 	}
 
 }

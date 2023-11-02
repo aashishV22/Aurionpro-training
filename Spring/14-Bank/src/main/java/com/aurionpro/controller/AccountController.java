@@ -33,7 +33,7 @@ public class AccountController
 	}
 
 	@PutMapping("/accounts/{accountNumber}/{transactionType}/{amount}")
-	public Account doTransaction(@RequestBody int accountNumber,@RequestBody String transactionType,@RequestBody double amount) 
+	public Account doTransaction(@PathVariable int accountNumber,@PathVariable String transactionType,@PathVariable double amount) 
 	{
 		Account account=accountService.findByAccountNo(accountNumber);
 		if(transactionType.equals("deposit")) {
@@ -47,6 +47,9 @@ public class AccountController
 		Account updatedAccount=accountService.save(account);
 		return updatedAccount;
 	}
+	
+	
+	
 	
 	
 }

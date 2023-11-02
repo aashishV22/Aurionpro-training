@@ -8,10 +8,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.aurionpro.entity.Admin;
+import com.aurionpro.entity.ResponseDocument;
 import com.aurionpro.entity.User;
 import com.aurionpro.service.AdminService;
 
@@ -21,6 +24,8 @@ public class AdminController
 {
 	@Autowired
 	private AdminService adminService;
+	@Autowired
+	private DocumentController documentController;
 	
 	@GetMapping("/admins")
 	public ResponseEntity<List<Admin>> getAllUsers(){
@@ -33,5 +38,19 @@ public class AdminController
 		Optional<Admin> admin = adminService.findById(admin_id);
 		return new ResponseEntity<>(admin,HttpStatus.OK);
 	}
+	
+	@GetMapping("admins/accountRequests")
+	public ResponseEntity<List<ResponseDocument>> getAccountRequests() 
+	{
+		List<ResponseDocument> allFiles = documentController.getAllFiles();
+		return new ResponseEntity<>(allFiles,HttpStatus.OK);
+	}
+	
+	@PutMapping("admins/status/{}")
+	public void updaateDocument(@RequestBody String status,@RequestBody int requestId) 
+	{
+		documentController.updateStatus(status,requestId);
+	}
+	
 	
 }

@@ -27,6 +27,8 @@ public class AccountType
 	@OneToOne(mappedBy = "typeId")
 	@JsonIgnore
 	private Account account;
+
+	
 	
 	@Column(name="type_name")
 	private String typeName;

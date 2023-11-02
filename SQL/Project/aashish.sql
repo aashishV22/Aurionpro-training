@@ -32,5 +32,9 @@ INSERT INTO account(customer_id, type_id , account_balance, bank_id) VALUES (203
 INSERT INTO account( customer_id, type_id , account_balance, bank_id) VALUES (202, 1002, 125.00, 21233);
 INSERT INTO account( customer_id, type_id , account_balance, bank_id) VALUES (202, 1001, 12125.00, 21232);
 
+SELECT * FROM project.account_type;
+INSERT INTO `project`.`account_type` (`type_id`, `type_name`) VALUES ('1001', 'saving');
+INSERT INTO `project`.`account_type` (`type_id`, `type_name`) VALUES ('1002', 'current');
+
 
 create database bankdb;
