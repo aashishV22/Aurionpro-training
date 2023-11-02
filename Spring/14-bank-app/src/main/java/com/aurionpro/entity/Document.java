@@ -67,6 +67,12 @@ public class Document
 	
 	@Column(name="document_size")
 	private long size;
+	
+	@Column(name="balance")
+	private double balance; 
+	
+	
+	
 
 	public Document(String documentTitle, String type,Date uploadDate, byte[] data) {
 		this.documentTitle = documentTitle;

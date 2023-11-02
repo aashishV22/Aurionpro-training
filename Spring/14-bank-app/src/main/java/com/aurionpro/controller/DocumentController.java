@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.aurionpro.entity.AccounRequest;
 import com.aurionpro.entity.Document;
 import com.aurionpro.entity.ResponseDocument;
 import com.aurionpro.service.DocumentStorageService;
@@ -28,7 +29,7 @@ public class DocumentController
 	private DocumentStorageService documentService;
 	
 	@PostMapping("/upload")
-	public String uploadFile(@RequestParam("file") MultipartFile file, int customerId, int accountTypeId){
+	public String uploadFile(@RequestParam("file") MultipartFile file, int customerId, AccounRequest data){
 		String message="";
 		try 
 		{
@@ -39,8 +40,9 @@ public class DocumentController
 					.path(String.valueOf(store.getDocumentId()))
 					.toUriString();
 			System.out.println(fileDownloadUri);
-			store.setAccountTypeId(accountTypeId);
+			store.setAccountTypeId(data.getAccountTypeId());
 			store.setCustomerId(customerId);
+			store.setBalance(data.getBalance());
 			store.setRequestStatus("pending");
 			store.setSize(file.getSize());
 			store.setUrl(fileDownloadUri);

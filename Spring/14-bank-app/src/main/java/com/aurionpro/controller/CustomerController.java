@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.aurionpro.entity.AccounRequest;
 import com.aurionpro.entity.Account;
 import com.aurionpro.entity.Admin;
 import com.aurionpro.entity.Customer;
@@ -47,10 +48,12 @@ public class CustomerController {
 		return new ResponseEntity<>(customer,HttpStatus.OK);
 	}
 	
-	@PostMapping("/customers/{customerId}/accountType/{accountTypeId}/accountCreate")
-	public ResponseEntity<String> addAccountRequest(@PathVariable int customerId,@PathVariable int accountTypeId,@RequestParam("file") MultipartFile file)
+	@PostMapping("/customers/{customerId}/createAccount")
+	public ResponseEntity<String> addAccountRequest(@PathVariable int customerId ,@RequestParam("file") MultipartFile file, @RequestParam("data") AccounRequest data )
 	{
-		String uploadFile = documentController.uploadFile(file,customerId,accountTypeId);
+		
+		
+		String uploadFile = documentController.uploadFile(file,customerId,data);
 		return new ResponseEntity<String>(uploadFile,HttpStatus.OK);
 	}
 	

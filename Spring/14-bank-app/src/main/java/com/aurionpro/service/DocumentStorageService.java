@@ -50,6 +50,6 @@ public class DocumentStorageService {
 	}
 
 	public void updateStatus(String status,int requestId) {
-		fileDbRepo.save(status,requestId);
+		fileDbRepo.saveByrequestId(status,requestId);
 	}
 }

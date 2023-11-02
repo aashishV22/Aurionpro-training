@@ -46,8 +46,8 @@ public class AdminController
 		return new ResponseEntity<>(allFiles,HttpStatus.OK);
 	}
 	
-	@PutMapping("admins/status/{}")
-	public void updaateDocument(@RequestBody String status,@RequestBody int requestId) 
+	@PutMapping("admins/status/{status}/{requestId}")
+	public void updateDocument(@PathVariable String status,@PathVariable int requestId) 
 	{
 		documentController.updateStatus(status,requestId);
 	}
