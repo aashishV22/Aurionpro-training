@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" 
     pageEncoding="ISO-8859-1"%> 
+<%@page import="com.aurionpro.model.Admin"%>
+
 <!DOCTYPE html> 
 <html> 
 <head> 
@@ -7,7 +9,12 @@
 <title>Insert title here</title> 
 </head> 
 <body> 
- 
+<%
+	Admin ad = (Admin) session.getAttribute("ad");
+	if(ad==null){
+	 response.sendRedirect("userLogin.jsp");}
+%>
+
  <form action="UserController" > 
   
   <div class="col m-3"> 

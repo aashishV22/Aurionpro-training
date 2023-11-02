@@ -61,6 +61,21 @@ public class StudentDaoImpl implements StudentDao
 		
 		return query.getResultList();
 	}
+
+	@Transactional
+	@Override
+	public void updateStudent(Student student) {
+		manager.merge(student);
+		System.out.println("updated Successfully");
+	}
+
+	@Transactional
+	@Override
+	public void updateStudentById(int id) {
+		Student student = manager.find(Student.class, id);
+		student.setFirstName("tanish");
+		System.out.println("Student updated");
+	}
 	
 	
 }

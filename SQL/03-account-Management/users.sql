@@ -63,6 +63,9 @@ CREATE TABLE transaction (
     FOREIGN KEY (account_no_receiver) REFERENCES account(account_number),
     FOREIGN KEY (transaction_typeid) REFERENCES transaction_type(transactiontype_id)
 );
+
+
+
 ALTER TABLE `accountmanagement`.`transaction` 
 ADD COLUMN `transaction_amount` INT NOT NULL AFTER `transaction_time`;
 

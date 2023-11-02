@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" 
     pageEncoding="ISO-8859-1"%> 
+<%@page import="com.aurionpro.model.Admin"%>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <!DOCTYPE html> 
 <html> 
@@ -17,6 +19,11 @@
  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" 
  crossorigin="anonymous"></script> 
 <body> 
+<%
+	Admin ad = (Admin) session.getAttribute("ad");
+	if(ad==null){
+	 response.sendRedirect("userLogin.jsp");}
+%>
 <div class="container mt-5"> 
 <br><br> 
 <h1>Admin Table</h1> 

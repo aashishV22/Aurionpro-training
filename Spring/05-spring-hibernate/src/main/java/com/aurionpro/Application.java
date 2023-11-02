@@ -28,11 +28,24 @@ public class Application implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 //		addNewStudent();
-//		findStudent();
+//		findStudent(10);
 //		findAllStudents();
 //		deleteStudentById();
-		findStudentByFirstName();
+//		findStudentByFirstName();
+//		updateStudent();
+		updateStudentById();
 	}	
+
+	private void updateStudentById() {
+		int id=10;
+		studentDao.updateStudentById(id);
+	}
+
+	private void updateStudent() {
+		Student student=new Student(4,"bignessss","patel","bignu@gmail.com");
+		studentDao.updateStudent(student);
+
+	}
 
 	private void findStudentByFirstName() {
 		String firstName="vedang";
@@ -53,11 +66,11 @@ public class Application implements CommandLineRunner{
 		}
 	}
 
-	private void findStudent() {
-		int id=181;
+	private void findStudent(int id) {
+//		int id=181;
 		Student student = studentDao.findStudent(id);
 		System.out.println(student);
-	}
+}
 
 	private void addNewStudent() 
 	{

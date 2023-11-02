@@ -10,7 +10,8 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet; 
 import javax.servlet.http.HttpServlet; 
 import javax.servlet.http.HttpServletRequest; 
-import javax.servlet.http.HttpServletResponse; 
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import com.aurionpro.util.AccountUtil;
@@ -91,6 +92,9 @@ public class UserController extends HttpServlet
 			}
 				break;
 
+			case "logOutClicked":
+				logOut(request,response);
+				break;
 			case "search":
 				try {	search(request,response);				}										  
 														  catch (ServletException e) {e.printStackTrace();} 
@@ -100,6 +104,14 @@ public class UserController extends HttpServlet
 		} 
  	} 
  
+
+	private void logOut(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		HttpSession session = request.getSession(false);
+        if (session != null) {
+            session.invalidate();
+        }
+        response.sendRedirect("userLogin.jsp");
+	}
 
 	private void addingAccount(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException 
     {
@@ -149,17 +161,27 @@ public class UserController extends HttpServlet
     	String pass = request.getParameter("password"); 
     	Admin ad 	= new Admin(uName, pass); 
     	if(dbUtil.validAdminLogin(ad)) 
-    	{ 
-    		RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/showAdmins.jsp"); 
-    		List<Admin> allAdmins = dbUtil.getAllAdmins(); 
-    		request.setAttribute("uName", uName); 
-    		request.setAttribute("allAdmins", allAdmins); 
-    		dispatcher.forward(request, response); 
-    	}else
+    	{  
+    	      if(ad!=null) 
+    	      { 
+	    	      System.out.println("hii"); 
+	    	      HttpSession session = request.getSession(); 
+	    	      session.setAttribute("ad", ad); 
+	    	       
+	    	       
+	    	      RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/showAdmins.jsp");  
+	    	      List<Admin> allAdmins = dbUtil.getAllAdmins();  
+	    	      request.setAttribute("uName", uName);  
+	    	      request.setAttribute("allAdmins", allAdmins);  
+	    	      dispatcher.forward(request, response);  
+    	      }
+    	}
+    	else
     	{ 
     		RequestDispatcher dispatcher = request.getRequestDispatcher("/userLogin.jsp"); 
     		dispatcher.forward(request, response); 
     	} 
+   
     } 
  
     private void list(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 

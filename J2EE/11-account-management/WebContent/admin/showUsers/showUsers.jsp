@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" 
     pageEncoding="ISO-8859-1"%> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
+<%@page import="com.aurionpro.model.Admin"%>
+
 <!DOCTYPE html> 
 <html> 
 <head> 
@@ -35,6 +37,11 @@ ul {
   integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" 
   crossorigin="anonymous"></script> 
 <body> 
+<%
+	Admin ad = (Admin) session.getAttribute("ad");
+	if(ad==null){
+	 response.sendRedirect("userLogin.jsp");}
+%>
 <ul>
 <div class="button-container container">
  	<li><form action="UserController" method="post">		
@@ -42,8 +49,9 @@ ul {
 	    	<button class="active">Home</button>
 	     </form>
 	</li>
-	<li><form action="userLogin.jsp">
-	    	<button onclick="myFunction()" >LogOut</button></form>
+	<li><form action="UserController">
+			<input type="hidden" name="action" value="logOutClicked">
+	    	<button>LogOut</button></form>
 	</li>
 </div>
 </ul>

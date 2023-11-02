@@ -16,5 +16,9 @@ public interface StudentDao
 
 	public List<Student> findStudent(String firstName);
 
+	public void updateStudent(Student student);
+
+	public void updateStudentById(int id);
+
 	
 }

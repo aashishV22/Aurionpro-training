@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" 
     pageEncoding="ISO-8859-1"%> 
+<%@page import="com.aurionpro.model.Admin"%>
 <!DOCTYPE html> 
 <html> 
 <head> 
@@ -28,17 +29,23 @@ ul {
 <body> 
 <ul>
 <div class="button-container container">
- 	<li><form action="../../UserController" method="post">		
+ 	<li><form action="../UserController" method="post">		
 			<input type="hidden" name="action" value="showUsers">
 	    	<button class="active">Home</button>
 	     </form>
 	</li>
-	<li><form action="../userLogin.jsp">
-	    	<button onclick="myFunction()" >LogOut</button></form>
+	<li><form action="../UserController">
+			<input type="hidden" name="action" value="logOutClicked">
+	    	<button>LogOut</button></form>
 	</li>
 </div>
 </ul>
 
+<%
+	Admin ad = (Admin) session.getAttribute("ad");
+	if(ad==null){
+	 response.sendRedirect("../userLogin.jsp");}
+%>
  <form action="../UserController" method="post"> 
   <div class="form-group m-3"> 
    <label for="exampleInputEmail1">First Name</label> 
