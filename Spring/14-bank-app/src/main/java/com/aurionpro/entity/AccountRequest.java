@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class AccounRequest {
+public class AccountRequest {
 	private int accountTypeId;
 	private double balance;
 }

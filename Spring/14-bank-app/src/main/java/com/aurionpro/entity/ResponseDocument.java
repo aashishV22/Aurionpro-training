@@ -19,4 +19,5 @@ public class ResponseDocument
 	private String url;
 	private String type;
 	private long size;	
+	private double balance;
 }

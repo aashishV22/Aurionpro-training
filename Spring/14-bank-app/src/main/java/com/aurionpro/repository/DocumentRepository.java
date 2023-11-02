@@ -19,4 +19,8 @@ public interface DocumentRepository extends JpaRepository<Document, String>{
 	@Query("UPDATE Document d SET d.requestStatus = :status WHERE d.requestId = :requestId")
 	void saveByrequestId(@Param("status") String status, @Param("requestId") int requestId);
 
+	
+	@Query("SELECT d FROM Document d WHERE d.requestId=:requestId")
+	Document getDocumentById(@Param("requestId") int requestId);
+
 }

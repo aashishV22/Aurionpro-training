@@ -52,4 +52,8 @@ public class DocumentStorageService {
 	public void updateStatus(String status,int requestId) {
 		fileDbRepo.saveByrequestId(status,requestId);
 	}
+
+	public Document getDocumentByRquestId(int requestId) {
+		return fileDbRepo.getDocumentById(requestId);
+	}
 }

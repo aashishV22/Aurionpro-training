@@ -16,9 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.aurionpro.entity.AccounRequest;
+import com.aurionpro.entity.AccountRequest;
 import com.aurionpro.entity.Document;
 import com.aurionpro.entity.ResponseDocument;
+import com.aurionpro.service.AccountService;
 import com.aurionpro.service.DocumentStorageService;
 
 @RestController
@@ -27,9 +28,11 @@ public class DocumentController
 {
 	@Autowired
 	private DocumentStorageService documentService;
+	@Autowired
+	private AccountService accountService;
 	
 	@PostMapping("/upload")
-	public String uploadFile(@RequestParam("file") MultipartFile file, int customerId, AccounRequest data){
+	public String uploadFile(@RequestParam("file") MultipartFile file, int customerId, AccountRequest data){
 		String message="";
 		try 
 		{
@@ -80,7 +83,8 @@ public class DocumentController
 																	dbFile.getDocumentTitle(),
 																	fileDownloadUri,
 																	dbFile.getType(),
-																	dbFile.getData().length);
+																	dbFile.getData().length,
+																	dbFile.getBalance());
 											}).collect(Collectors.toList());
 	
 		return files;
@@ -96,7 +100,28 @@ public class DocumentController
 	  }
 
 
-	public void updateStatus(String status,int requestId) {
-		documentService.updateStatus(status,requestId);
-	}
+//	public void updateStatus(String status,int requestId) {
+//		if(status.equalsIgnoreCase("approved")) {
+//			documentService.updateStatus(status,requestId);
+//			Document document = documentService.getDocumentByRquestId(requestId);
+//			accountService.createAccount(document.getAccountTypeId(),document.getBalance(),document.getCustomerId());
+//		}else {
+//			documentService.updateStatus(status,requestId);
+//			// document table se row delete ho jaega
+//			
+//		}
+//	}
+
+	  public void updateStatus(String status,int requestId) {
+			if(status.equalsIgnoreCase("approved")) {
+				documentService.updateStatus(status,requestId);
+				Document document = documentService.getDocumentByRquestId(requestId);
+				accountService.createAccount(document.getAccountTypeId(),document.getBalance(),document.getCustomerId());
+			}else {
+				documentService.updateStatus(status,requestId);
+				// document table se row delete ho jaega
+				
+			}
+		}
+
 }

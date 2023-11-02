@@ -13,4 +13,6 @@ public interface AdminService {
 
 	Optional<Admin> findById(int admin_id);
 
+	void updateStatus(String status, int requestId);
+
 }

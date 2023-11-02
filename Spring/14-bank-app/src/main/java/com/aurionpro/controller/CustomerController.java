@@ -15,12 +15,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.aurionpro.entity.AccounRequest;
 import com.aurionpro.entity.Account;
+import com.aurionpro.entity.AccountRequest;
 import com.aurionpro.entity.Admin;
 import com.aurionpro.entity.Customer;
 import com.aurionpro.service.AdminService;
 import com.aurionpro.service.CustomerService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
 @RequestMapping("/app")
@@ -49,11 +50,15 @@ public class CustomerController {
 	}
 	
 	@PostMapping("/customers/{customerId}/createAccount")
-	public ResponseEntity<String> addAccountRequest(@PathVariable int customerId ,@RequestParam("file") MultipartFile file, @RequestParam("data") AccounRequest data )
+	public ResponseEntity<String> addAccountRequest(@PathVariable int customerId ,@RequestParam("file") MultipartFile file, String data )
 	{
-		
-		
-		String uploadFile = documentController.uploadFile(file,customerId,data);
+		AccountRequest accountRequestData=null;
+		try {
+            accountRequestData = new ObjectMapper().readValue(data, AccountRequest.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+		String uploadFile = documentController.uploadFile(file,customerId,accountRequestData);
 		return new ResponseEntity<String>(uploadFile,HttpStatus.OK);
 	}
 	

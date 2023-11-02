@@ -9,13 +9,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.aurionpro.entity.Admin;
 import com.aurionpro.entity.ResponseDocument;
-import com.aurionpro.entity.User;
 import com.aurionpro.service.AdminService;
 
 @RestController
@@ -49,7 +47,7 @@ public class AdminController
 	@PutMapping("admins/status/{status}/{requestId}")
 	public void updateDocument(@PathVariable String status,@PathVariable int requestId) 
 	{
-		documentController.updateStatus(status,requestId);
+		adminService.updateStatus(status,requestId);
 	}
 	
 	
