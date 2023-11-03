@@ -21,4 +21,5 @@ public class ResponseDocument
 	private String type;
 	private long size;	
 	private double balance;
+	private int bankId;
 }

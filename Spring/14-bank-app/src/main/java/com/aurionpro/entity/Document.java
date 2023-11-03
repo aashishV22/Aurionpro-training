@@ -74,7 +74,12 @@ public class Document
 	private double balance; 
 	
 	
+//	@OneToOne
+//	@JoinColumn(name = "bank_id")
+//	private Bank bankId;
 	
+	@Column(name="bank_Id")
+	private int bankId;
 
 	public Document(String documentTitle, String type,Date uploadDate, byte[] data) {
 		this.documentTitle = documentTitle;
@@ -82,7 +87,7 @@ public class Document
 		this.uploadDate = uploadDate;
 		this.data = data;
 	}
-	
+	 
 	
 
 }

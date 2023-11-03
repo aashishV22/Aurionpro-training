@@ -43,6 +43,7 @@ public class DocumentController
 					.path(String.valueOf(store.getRequestId()))
 					.toUriString();
 			System.out.println(fileDownloadUri);
+			store.setBankId(data.getBankId());
 			store.setAccountTypeId(data.getAccountTypeId());
 			store.setCustomerId(customerId);
 			store.setBalance(data.getBalance());
@@ -85,7 +86,8 @@ public class DocumentController
 																	fileDownloadUri,
 																	dbFile.getType(),
 																	dbFile.getData().length,
-																	dbFile.getBalance());
+																	dbFile.getBalance(),
+																	dbFile.getBankId());
 											}).collect(Collectors.toList());
 	
 		return files;

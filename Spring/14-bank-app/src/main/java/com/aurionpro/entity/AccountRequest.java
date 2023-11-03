@@ -10,4 +10,5 @@ import lombok.NoArgsConstructor;
 public class AccountRequest {
 	private int accountTypeId;
 	private double balance;
+	private int bankId;
 }

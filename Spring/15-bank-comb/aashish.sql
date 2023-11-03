@@ -32,16 +32,5 @@ INSERT INTO account(customer_id, type_id , account_balance, bank_id) VALUES (203
 INSERT INTO account( customer_id, type_id , account_balance, bank_id) VALUES (202, 1002, 125.00, 21233);
 INSERT INTO account( customer_id, type_id , account_balance, bank_id) VALUES (202, 1001, 12125.00, 21232);
 
-SELECT * FROM project.account_type;
-INSERT INTO `project`.`account_type` (`type_id`, `type_name`) VALUES ('1001', 'saving');
-INSERT INTO `project`.`account_type` (`type_id`, `type_name`) VALUES ('1002', 'current');
-
-
-INSERT INTO `project`.`bank` (`bank_id`, `bank_branch`, `bank_ifsc`, `bank_name`) VALUES ('21231', 'panvel', 'BOB2323232', 'Bank of baroda');
-INSERT INTO `project`.`bank` (`bank_id`, `bank_branch`, `bank_ifsc`, `bank_name`) VALUES ('21232', 'vashi', 'ICIC2323232', 'ICICI Bank');
-INSERT INTO `project`.`bank` (`bank_id`, `bank_branch`, `bank_ifsc`, `bank_name`) VALUES ('21233', 'dadar', 'SBI27655454', 'SBI bank');
-
-
-
 
 create database bankdb;

@@ -35,7 +35,7 @@ public class AdminServiceImpl implements AdminService{
         if (status.equalsIgnoreCase("approved")) {
             documentService.updateStatus(status, requestId);
             Document document = documentService.getDocumentByRquestId(requestId);
-            accountController.createAccount(document.getAccountTypeId(), document.getBalance(), document.getCustomerId());
+            accountController.createAccount(document.getAccountTypeId(), document.getBalance(), document.getCustomerId(),document.getBankId());
         } else {
             documentService.updateStatus(status, requestId);
             // document table se row delete ho jaega

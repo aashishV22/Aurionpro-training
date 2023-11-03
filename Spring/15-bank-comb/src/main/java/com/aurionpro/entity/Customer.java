@@ -24,34 +24,30 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Entity
-@Table(name = "account")
-public class Account 
-{
+@Table(name = "customer")
+public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="account_number")
-	private int    accountNumber   ;
-	
-	@OneToOne
-	@JoinColumn(name = "type_id")	
-	private AccountType typeId;
-	
-	@Column(name="account_balance")
-	private double balance;
-	
-	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="customer_id" ,referencedColumnName="customer_id")
-	private Customer customerId;
+	@Column(name="customer_id")
+	private int    customerId   ;
 
+	@Column(name="customer_Fname")
+	private String firstName   ;
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="bank_id" ,referencedColumnName="bank_id")
-	private Bank bankId;
-
-	@OneToMany(mappedBy = "accountNo")
+	@Column(name="customer_Lname")
+	private String lastName   ;
+	
+	@Column(name="customer_email")
+	private String email   ;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "user_id")
+	private User user_id;
+	
+	
+	@OneToMany(mappedBy = "customerId")
 	@JsonIgnore
-	private List<Transaction> transactions = new ArrayList<>();
+	private List<Account> accounts = new ArrayList<>();
+	
 	
 }
-
