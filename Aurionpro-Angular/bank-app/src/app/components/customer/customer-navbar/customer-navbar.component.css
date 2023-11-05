@@ -1,0 +1,38 @@
+/* Style for the navbar */
+.navbar {
+    background-color: #007BFF;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+  }
+  
+  /* Style for the list of buttons */
+  .navbar-list {
+    list-style: none;
+    display: flex;
+  }
+  
+  .navbar-list li {
+    margin-right: 20px;
+  }
+  
+  .navbar-list a {
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  /* Style for the Log Out button */
+  .logout-button {
+    background-color: #FF3547;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .logout-button:hover {
+    background-color: #D71B27;
+  }
+  

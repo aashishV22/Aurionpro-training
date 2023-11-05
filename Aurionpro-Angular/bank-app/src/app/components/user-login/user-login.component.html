@@ -1,0 +1,32 @@
+<!-- <pre>{{users|json}}</pre> -->
+<pre>{{userLogin|json}}</pre>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="user-login.component.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form (submit)="onSubmit()" #f="ngForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username"      
+                [(ngModel)]="userLogin.userName" placeholder="Enter your username" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" 
+                [(ngModel)]="userLogin.password" placeholder="Enter your password" required>
+            
+            <label for="role">Role:</label>
+            <select id="role" name="role" [(ngModel)]="userLogin.roleId.roleId" required>
+                <option value="1">Admin</option>
+                <option value="2">User</option>
+            </select>
+            
+            <button [disabled]="!f.valid" type="submit">Login</button>
+        </form>
+    </div>
+</body>
+</html>

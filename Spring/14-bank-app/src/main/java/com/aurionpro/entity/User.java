@@ -49,5 +49,15 @@ public class User
 	@JsonIgnore
 	private Customer customer;
 //	
+	
+	@Override
+	public String toString() {
+	    return "User{" +
+	            "userId=" + userId +
+	            ", username='" + userName + '\'' +
+	            ", role=" + (roleId != null ? roleId.getRoleName() : "null") + // Print the role name
+	            '}';
+	}
+
 			
 }

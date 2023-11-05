@@ -29,5 +29,14 @@ public class Role {
 	@JsonIgnore
 	private User user;
 
+	@Override
+	public String toString() {
+	    return "Role{" +
+	            "roleId=" + roleId +
+	            ", name='" + roleName + '\'' +
+	            ", user=" + (user != null ? user.getUserName() : "null") + // Print the user's username
+	            '}';
+	}
+
 	
 }
